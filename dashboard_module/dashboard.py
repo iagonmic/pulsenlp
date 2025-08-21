@@ -1,0 +1,1 @@
+# Configuração principal do Dash/Plotly

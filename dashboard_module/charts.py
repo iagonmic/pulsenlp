@@ -1,0 +1,1 @@
+# Funções para gráficos (barras, linha do tempo, etc.)

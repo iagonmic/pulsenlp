@@ -1,1 +1,1 @@
-# (Opcional) geração de nuvem de palavras
+# Geração de nuvem de palavras

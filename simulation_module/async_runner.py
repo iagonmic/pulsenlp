@@ -1,0 +1,1 @@
+# Loop assíncrono para simular comentários em tempo real

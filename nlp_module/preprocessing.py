@@ -1,0 +1,1 @@
+# Tokenização, normalização, stemming, lematização
