@@ -1,1 +1,0 @@
-# Salvar histórico em SQLite/Mongo

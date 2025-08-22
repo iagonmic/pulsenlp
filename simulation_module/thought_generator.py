@@ -8,10 +8,24 @@ from user_profiles import UserProfile
 load_dotenv()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
+modelos_disponiveis = [
+        "openai/gpt-oss-120b",
+        "openai/gpt-oss-20b",
+        "qwen/qwen3-32b",
+        "deepseek-r1-distill-llama-70b",
+        "llama-3.1-8b-instant",
+        "llama-3.3-70b-versatile",
+        "meta-llama/llama-4-maverick-17b-128e-instruct",
+        "meta-llama/llama-4-scout-17b-16e-instruct",
+        "meta-llama/llama-guard-4-12b",
+        "meta-llama/llama-prompt-guard-2-22m",
+        "meta-llama/llama-prompt-guard-2-86m"
+    ]
+
 class UserAgent(Agent):
-    def __init__(self, user_profile: UserProfile, models: list, **kwargs):
+    def __init__(self, user_profile: UserProfile, **kwargs):
         self.user_profile = user_profile
-        self.models = models
+        self.models = modelos_disponiveis
         self.current = 0
 
         super().__init__(
@@ -42,24 +56,11 @@ class UserAgent(Agent):
 
 # ====================== TESTE ======================
 if __name__ == "__main__":
-    modelos_disponiveis = [
-        "openai/gpt-oss-120b",
-        "openai/gpt-oss-20b",
-        "qwen/qwen3-32b",
-        "deepseek-r1-distill-llama-70b",
-        "llama-3.1-8b-instant",
-        "llama-3.3-70b-versatile",
-        "meta-llama/llama-4-maverick-17b-128e-instruct",
-        "meta-llama/llama-4-scout-17b-16e-instruct",
-        "meta-llama/llama-guard-4-12b",
-        "meta-llama/llama-prompt-guard-2-22m",
-        "meta-llama/llama-prompt-guard-2-86m"
-    ]
 
     user = UserProfile.generate_random()
     print(f"[Perfil gerado] {user}")
 
-    agent = UserAgent(user, modelos_disponiveis)
+    agent = UserAgent(user)
 
     for _ in range(3):
         print(f"{user.name} disse: {agent.generate_thought()}")

@@ -1,0 +1,104 @@
+[
+  {
+    "profile": {
+      "name": "Mariana",
+      "style": "casual",
+      "tone": "analytical",
+      "topics": [
+        "economia",
+        "esportes",
+        "tecnologia",
+        "música",
+        "filmes"
+      ]
+    },
+    "current_model": 0,
+    "memory": {
+      "summaries": {},
+      "memories": {},
+      "runs": {}
+    }
+  },
+  {
+    "profile": {
+      "name": "Ana",
+      "style": "emoji",
+      "tone": "neutral",
+      "topics": [
+        "viagens",
+        "música",
+        "tecnologia",
+        "filmes",
+        "esportes",
+        "economia"
+      ]
+    },
+    "current_model": 0,
+    "memory": {
+      "summaries": {},
+      "memories": {},
+      "runs": {}
+    }
+  },
+  {
+    "profile": {
+      "name": "Paulo",
+      "style": "formal",
+      "tone": "sarcastic",
+      "topics": [
+        "tecnologia",
+        "economia",
+        "música",
+        "esportes",
+        "política",
+        "filmes"
+      ]
+    },
+    "current_model": 0,
+    "memory": {
+      "summaries": {},
+      "memories": {},
+      "runs": {}
+    }
+  },
+  {
+    "profile": {
+      "name": "Isabela",
+      "style": "detalhado",
+      "tone": "analytical",
+      "topics": [
+        "economia",
+        "política",
+        "esportes",
+        "música",
+        "viagens"
+      ]
+    },
+    "current_model": 0,
+    "memory": {
+      "summaries": {},
+      "memories": {},
+      "runs": {}
+    }
+  },
+  {
+    "profile": {
+      "name": "Bianca",
+      "style": "detalhado",
+      "tone": "pessimistic",
+      "topics": [
+        "tecnologia",
+        "música",
+        "filmes",
+        "política",
+        "economia"
+      ]
+    },
+    "current_model": 0,
+    "memory": {
+      "summaries": {},
+      "memories": {},
+      "runs": {}
+    }
+  }
+]

@@ -1,4 +1,3 @@
 random
-langchain_groq
-langchain_core
+agno
 dotenv
