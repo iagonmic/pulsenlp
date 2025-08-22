@@ -1,5 +1,5 @@
-from random import randint, choice, sample
 # Definição de perfis de usuários (otimista, crítico, neutro, etc.)
+from random import randint, choice, sample
 
 NAMES = ["Ana", "Carlos", "João", "Mariana", "Lucas", "Fernanda", "Rafael", "Bianca", "Paulo", "Isabela"]
 STYLES = ["emoji", "formal", "casual", "gírias", "detalhado"]
