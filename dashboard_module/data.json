@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "categoria": "Tecnologia",
+    "texto": "Python é uma linguagem incrível para análise de dados e criação de dashboards."
+  },
+  {
+    "id": 2,
+    "categoria": "Tecnologia",
+    "texto": "Dash e Plotly facilitam muito a construção de aplicações web interativas."
+  },
+  {
+    "id": 3,
+    "categoria": "Ciência",
+    "texto": "Machine learning e inteligência artificial estão transformando o mundo."
+  },
+  {
+    "id": 4,
+    "categoria": "Ciência",
+    "texto": "A visualização de dados é essencial para comunicar resultados complexos."
+  }
+]
