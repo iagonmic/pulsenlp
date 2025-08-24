@@ -1,22 +1,111 @@
 [
   {
-    "id": 1,
-    "categoria": "Tecnologia",
-    "texto": "Python é uma linguagem incrível para análise de dados e criação de dashboards."
+    "nome": "João Silva",
+    "texto": "Viajar é uma experiência única que nos permite ver o mundo sob diferentes perspectivas. Conhecer novas culturas, fazer novos amigos e aprender com cada destino nos transforma. O mais importante é viver o momento e aproveitar ao máximo cada oportunidade que a vida nos oferece.",
+    "rating": 0.7
   },
   {
-    "id": 2,
-    "categoria": "Tecnologia",
-    "texto": "Dash e Plotly facilitam muito a construção de aplicações web interativas."
+    "nome": "Maria Oliveira",
+    "texto": "Às vezes, as coisas mais simples podem trazer a maior felicidade. Um dia tranquilo, com um livro em mãos e uma xícara de chá, pode ser o suficiente para encontrar a paz. Devemos aprender a desacelerar e a valorizar os pequenos momentos do nosso cotidiano.",
+    "rating": 0.6
   },
   {
-    "id": 3,
-    "categoria": "Ciência",
-    "texto": "Machine learning e inteligência artificial estão transformando o mundo."
+    "nome": "Carlos Pereira",
+    "texto": "A conexão com a natureza é essencial para o bem-estar humano. Estar em meio ao verde, sentir o ar puro e ouvir o som dos animais traz uma sensação de harmonia. A preservação do meio ambiente é uma responsabilidade de todos, pois ele é a base de nossa existência.",
+    "rating": 0.8
   },
   {
-    "id": 4,
-    "categoria": "Ciência",
-    "texto": "A visualização de dados é essencial para comunicar resultados complexos."
+    "nome": "Ana Costa",
+    "texto": "Cada desafio que enfrentamos na vida nos torna mais fortes. Pode ser difícil perceber isso enquanto estamos no meio da tempestade, mas é através dessas experiências que crescemos. É importante manter a esperança e a perseverança, pois, ao final, sempre há aprendizado.",
+    "rating": 0.7
+  },
+  {
+    "nome": "Lucas Santos",
+    "texto": "A inovação tecnológica tem transformado todos os aspectos da nossa vida. Da forma como nos comunicamos à maneira como trabalhamos e aprendemos, a tecnologia nos oferece ferramentas incríveis para melhorar a nossa rotina. Contudo, devemos usá-la de forma consciente e responsável.",
+    "rating": 0.5
+  },
+  {
+    "nome": "Juliana Almeida",
+    "texto": "A amizade verdadeira é um dos maiores tesouros que podemos ter. Encontrar pessoas que nos compreendem, nos apoiam e compartilham os bons e maus momentos da vida é algo raro e precioso. Cultivar esses laços é fundamental para nossa felicidade e equilíbrio emocional.",
+    "rating": 0.9
+  },
+  {
+    "nome": "Rafael Souza",
+    "texto": "O mundo está mudando rapidamente, e isso pode ser assustador às vezes. No entanto, as mudanças trazem também grandes oportunidades de aprendizado e evolução. Precisamos estar preparados para nos adaptar, aceitar a mudança e encontrar formas de crescer em meio a ela.",
+    "rating": 0.6
+  },
+  {
+    "nome": "Fernanda Lima",
+    "texto": "O amor é um dos sentimentos mais poderosos que existem. Ele tem o poder de curar, de nos motivar a ser melhores e de nos conectar profundamente com os outros. No entanto, também exige cuidado e respeito, sendo importante aprender a equilibrar o amor próprio e o amor pelo próximo.",
+    "rating": 0.9
+  },
+  {
+    "nome": "Ricardo Mendes",
+    "texto": "A vida profissional e pessoal devem estar em equilíbrio para que possamos nos sentir realizados. Buscar crescimento na carreira é importante, mas é igualmente essencial dedicar tempo para a família, os amigos e para atividades que nos tragam prazer e descanso. O equilíbrio é a chave para o sucesso.",
+    "rating": 0.8
+  },
+  {
+    "nome": "Patrícia Rocha",
+    "texto": "A educação é um dos pilares mais importantes da sociedade. Ela nos oferece as ferramentas para melhorar a nossa vida e, ao mesmo tempo, para contribuirmos positivamente para o mundo. Cada pessoa tem o direito e a responsabilidade de buscar conhecimento e compartilhar o que aprendeu.",
+    "rating": 0.7
+  },
+  {
+    "nome": "Eduardo Almeida",
+    "texto": "A perseverança é o segredo para alcançar nossos objetivos. Não importa quantos obstáculos apareçam no caminho, o importante é nunca desistir e continuar lutando. Acredite no seu potencial e vá em frente, mesmo quando as coisas parecem difíceis.",
+    "rating": 0.8
+  },
+  {
+    "nome": "Carla Fernandes",
+    "texto": "O equilíbrio entre o trabalho e a vida pessoal é essencial para manter a saúde mental e física. Às vezes, precisamos parar e refletir sobre as nossas prioridades, para garantir que estamos cuidando de nós mesmos e dos outros da melhor forma possível.",
+    "rating": 0.7
+  },
+  {
+    "nome": "Felipe Costa",
+    "texto": "A superação de desafios nos ensina muito sobre a nossa própria força interior. Cada dificuldade enfrentada se torna uma oportunidade de crescimento. O importante é não perder a esperança e continuar em frente, sempre buscando soluções.",
+    "rating": 0.9
+  },
+  {
+    "nome": "Luciana Martins",
+    "texto": "Viver o presente é uma das melhores formas de aproveitar a vida. Muitas vezes, estamos tão preocupados com o futuro ou presos ao passado que esquecemos de valorizar o momento atual. Aproveitar cada segundo é a chave para uma vida plena.",
+    "rating": 0.6
+  },
+  {
+    "nome": "Gustavo Lima",
+    "texto": "A gratidão é um dos sentimentos mais poderosos que podemos cultivar. Quando somos gratos pelas pequenas coisas, nossa perspectiva sobre a vida muda, e passamos a ver a beleza nas pequenas situações cotidianas. A gratidão traz paz e felicidade.",
+    "rating": 0.7
+  },
+  {
+    "nome": "Beatriz Souza",
+    "texto": "O autoconhecimento é o primeiro passo para uma vida mais feliz e equilibrada. Quando entendemos quem somos, o que queremos e o que precisamos, somos mais capazes de tomar decisões que nos tragam realização pessoal e profissional.",
+    "rating": 0.8
+  },
+  {
+    "nome": "André Martins",
+    "texto": "A vida é feita de escolhas, e cada decisão que tomamos tem o poder de nos levar para diferentes caminhos. O importante é ter coragem de seguir o que o coração manda, com confiança e responsabilidade.",
+    "rating": 0.6
+  },
+  {
+    "nome": "Sofia Pereira",
+    "texto": "A solidariedade é um dos pilares de uma sociedade mais justa e igualitária. Quando nos colocamos no lugar do outro e oferecemos nossa ajuda, criamos um ambiente de apoio mútuo, o que fortalece todos os envolvidos.",
+    "rating": 0.7
+  },
+  {
+    "nome": "Marcelo Costa",
+    "texto": "A arte tem o poder de transformar a nossa percepção do mundo. Ao apreciar uma obra de arte, seja ela pintura, música ou teatro, somos capazes de enxergar a vida de uma forma mais profunda e significativa.",
+    "rating": 0.8
+  },
+  {
+    "nome": "Isabela Rocha",
+    "texto": "O autodesenvolvimento é um processo contínuo. Sempre podemos melhorar e nos tornar versões melhores de nós mesmos. O importante é ter a humildade de reconhecer onde podemos crescer e a coragem de buscar as mudanças necessárias.",
+    "rating": 0.9
+  },
+  {
+    "nome": "Tiago Silva",
+    "texto": "A prática da meditação tem me ajudado a manter a calma e o foco diante dos desafios do dia a dia. Ela permite que eu conecte comigo mesmo e com o momento presente, proporcionando uma sensação de paz interior.",
+    "rating": 0.7
   }
 ]
+
+
+
+
