@@ -4,8 +4,8 @@ import dash_mantine_components as dmc
 import pandas as pd
 import json
 from typing import List
-from charts import gerar_grafico_linha, gerar_grafico_barra
-from wordcloud_gen import gerar_nuvem_palavras_base64
+from dashboard_module.charts import gerar_grafico_linha, gerar_grafico_barra
+from dashboard_module.wordcloud_gen import gerar_nuvem_palavras_base64
 
 def criar_filtros(df: pd.DataFrame, colunas: List[str], id_prefix: str):
     filtros = []
@@ -262,6 +262,8 @@ def criar_dashboard(
 
 # ------------------------------- TESTE LOCAL -----------------------------------
 
+"""
+
 json_path = "dashboard_module/data.json"
 
 app = criar_dashboard(
@@ -277,6 +279,8 @@ app = criar_dashboard(
 
 if __name__ == "__main__":
     app.run_server(debug=True)
+
+"""
 
 
 
