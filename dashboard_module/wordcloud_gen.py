@@ -1,4 +1,3 @@
-# wordcloud_gen.py
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 import io
