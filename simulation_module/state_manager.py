@@ -14,7 +14,6 @@ def save_state(agents: list):
                 "name": agent.user_profile.name,
                 "style": agent.user_profile.style,
                 "tone": agent.user_profile.tone,
-                "topics": agent.user_profile.topics,
             },
             "current_model": agent.current,
             "memory": agent.memory.to_dict() if hasattr(agent.memory, "to_dict") else {}
@@ -36,7 +35,6 @@ def load_state():
                 name=agent_data["profile"]["name"],
                 style=agent_data["profile"]["style"],
                 tone=agent_data["profile"]["tone"],
-                topics=agent_data["profile"]["topics"],
             )
             agent = UserAgent(profile)
             agent.current = agent_data["current_model"]

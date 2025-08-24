@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg') # evitar problemas de threading com o Dash
 import dash
 from dash import dcc, html
 import dash_mantine_components as dmc
@@ -75,6 +77,41 @@ def criar_dashboard(
         children=[
             dmc.Container(
                 [
+                    dmc.Card(
+                    [
+                        dmc.Text("Defina o tópico e número de agentes", weight=700, size="lg", mb=10),
+                        dmc.Group(
+                            [
+                                dmc.TextInput(
+                                    label="Digite o tópico da conversa abaixo:",
+                                    id="input-topico",
+                                    placeholder="Digite aqui o tema para comentários...",
+                                    style={"flex": 2},
+                                ),
+                                dmc.NumberInput(
+                                    id="input-agentes",
+                                    value=3,  # valor padrão
+                                    min=1,
+                                    max=10,
+                                    step=1,
+                                    label="Quantas pessoas vai querer na conversa?",
+                                    size="sm",
+                                    style={"width": "120px"},
+                                ),
+                            ],
+                            grow=True,
+                        ),
+                        dmc.Button("Iniciar",id="botao-topico", color="blue", radius="md", fullWidth=True, style={"marginTop": "15px"}),
+                    ],
+                    withBorder=True,
+                    shadow="md",
+                    radius="lg",
+                    p="md",
+                    style={
+                        "backgroundColor": "#1A1B1E",
+                        "marginBottom": "20px",
+                    },
+                ),
                     dmc.Grid(
                         [
                             # Coluna esquerda: Wordcloud e Último Comentário
@@ -199,6 +236,65 @@ def criar_dashboard(
 
     # ------------------------ CALLBACKS -----------------------------
 
+    @app.callback(
+    # A saída agora pode ser ajustada para o que você precisar.
+    # Por exemplo, uma mensagem de sucesso em vez de limpar o input.
+    dash.Output("input-topico", "value"),
+    dash.Input("botao-topico", "n_clicks"),
+    dash.State("input-topico", "value"),
+    # O ID do State foi atualizado para "input-agentes" de acordo com o seu layout.
+    dash.State("input-agentes", "value"),
+    prevent_initial_call=True
+)
+    def definir_topico_e_agentes(n_clicks, topico, num_agentes):
+        """
+        Define e salva o tópico e o número de agentes em um arquivo JSON.
+
+        Args:
+            n_clicks (int): Número de cliques no botão.
+            topico (str): O tópico inserido pelo usuário.
+            num_agentes (str): O número de agentes inserido pelo usuário.
+
+        Returns:
+            str: Uma string vazia para limpar o campo de entrada do tópico.
+        """
+        if not topico or topico.strip() == "":
+            # Se o tópico estiver vazio, retorna sem fazer nada.
+            print("Tópico não pode ser vazio.")
+            return topico
+
+        # Verifica se o número de agentes é válido antes de salvar.
+        try:
+            # A entrada de número do Dash já retorna um tipo numérico,
+            # mas é bom ter a validação.
+            num_agentes_int = int(num_agentes)
+        except (ValueError, TypeError):
+            print("Número de agentes inválido.")
+            # Retorne o valor original para o usuário corrigir.
+            return topico
+
+        # Cria um dicionário para armazenar os dados.
+        dados_para_salvar = {
+            "topico": topico,
+            "num_agentes": num_agentes_int
+        }
+
+        try:
+            # Salva o dicionário como JSON.
+            # 'w' para sobrescrever, 'a' para adicionar ao final.
+            # 'indent=4' para formatar o JSON de forma legível.
+            with open("dashboard_module/topico.json", "w", encoding="utf-8") as f:
+                json.dump(dados_para_salvar, f, ensure_ascii=False, indent=4)
+            
+            print(f"Dados salvos com sucesso: {dados_para_salvar}")  # Mensagem de debug
+            
+        except IOError as e:
+            print(f"Erro ao salvar o arquivo: {e}")
+            # Em caso de erro, você pode retornar algo para notificar o usuário.
+
+        # Retorna uma string vazia para limpar o campo de entrada 'input-topico'.
+        return topico
+    
     # Atualizar gráfico de linha
     @app.callback(
         dash.dependencies.Output("grafico-linha", "figure"),
@@ -276,42 +372,4 @@ app = criar_dashboard(
 )
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    app.run(debug=True)

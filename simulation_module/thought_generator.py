@@ -29,9 +29,9 @@ class UserAgent(Agent):
         self.current = 0
 
         super().__init__(
-            role=f"Usuário {user_profile.name} ({user_profile.style}, {user_profile.tone}) comentando sobre {', '.join(user_profile.topics)}",
+            role=f"Usuário {user_profile.name} ({user_profile.style}, {user_profile.tone}) comentando sobre um tópico fornecido",
             instructions="Você é um usuário com um perfil específico." \
-            "Gere pensamentos baseados em um dos tópicos de interesse, mantendo congruência com o estilo e tom que lhe foram dados.",
+            "Gere pensamentos baseados no tópico que foi fornecido, mantendo congruência com o estilo e tom que lhe foram dados.",
             model=Groq(id=self.models[self.current], api_key=GROQ_API_KEY),
             memory=Memory(),
             **kwargs
@@ -43,15 +43,15 @@ class UserAgent(Agent):
         print(f"[INFO] Trocando para modelo: {self.models[self.current]}")
         self.model = Groq(id=self.models[self.current], api_key=GROQ_API_KEY)
 
-    def generate_thought(self) -> str:
+    def generate_thought(self, topico) -> str:
         """Gera um pensamento do usuário, trocando de modelo se falhar."""
         try:
-            response = self.run("Diga uma opinião curta sobre um dos tópicos que você entende.")
+            response = self.run(f"Diga uma opinião curta sobre o seguinte tópico: {topico}")
             return str(response.content)
         except Exception as e:
             print(f"[ERRO] {e} -> tentando próximo modelo...")
             self._switch_model()
-            return self.generate_thought()
+            return self.generate_thought(topico)
 
 
 # ====================== TESTE ======================

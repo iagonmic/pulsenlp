@@ -1,36 +1,93 @@
-# Loop assíncrono para simular comentários em tempo real
-import asyncio
+import os
+import json
 import random
+import asyncio
 from thought_generator import UserAgent
 from user_profiles import UserProfile
 from state_manager import save_state, load_state
+#from nlp_module.sentiment import sentiment_analysis
 
-async def simulate_user(agent: UserAgent, delay_range=(5, 20)):
+### TESTE
+# Análise de sentimentos
+from LeIA import SentimentIntensityAnalyzer
+
+def sentiment_analysis(text: str):
+    analyzer = SentimentIntensityAnalyzer()
+    score = analyzer.polarity_scores(text)
+    
+    return score['compound']
+
+### TESTE
+
+DATA_PATH = os.path.join("dashboard_module", "data.json")
+TOPICO_CONFIG_PATH = os.path.join("dashboard_module", "topico.json")
+
+def append_comment_to_json(agent_name: str, agent_style: str, agent_tone: str, text: str):
+    """Adiciona um comentário ao arquivo JSON com análise de sentimento."""
+    try:
+        if os.path.exists(DATA_PATH):
+            with open(DATA_PATH, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        else:
+            data = []
+
+        # Calcula o rating usando NLP
+        rating = sentiment_analysis(text)
+
+        new_entry = {
+            "nome": agent_name,
+            "style": agent_style,
+            "tone": agent_tone,
+            "texto": text,
+            "rating": rating
+        }
+        data.append(new_entry)
+
+        with open(DATA_PATH, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+    except Exception as e:
+        print(f"[ERRO] Falha ao salvar comentário no JSON: {e}")
+
+
+async def simulate_user(agent: UserAgent, topico: str, delay_range=(5, 20)):
     """Loop assíncrono: gera pensamentos em tempo real para um usuário."""
     while True:
         await asyncio.sleep(random.uniform(*delay_range))  # espera aleatória
-        thought = agent.generate_thought()
+        thought = agent.generate_thought(topico)
         print(f"[{agent.user_profile.name}] 💬 {thought}")
+
+        # Salvar no JSON com rating de sentimento
+        append_comment_to_json(agent.user_profile.name, agent.user_profile.style, agent.user_profile.tone, thought)
+
+
+def load_topic():
+    if os.path.exists(TOPICO_CONFIG_PATH):
+        with open(TOPICO_CONFIG_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {"topico": "Discussão livre", "num_agentes": 3}
 
 
 async def main(num_users=3, resume=False):
+    config = load_topic()
+    topico = config["topico"]
+    num_users = config["num_agentes"]
+
+    print(f"[INFO] Iniciando conversa sobre: {topico} ({num_users} agentes)")
+
     if resume:
         agents = load_state()
-        print(f"[INFO] Estado carregado com {len(agents)} usuários.")
         if not agents:
-            print("[INFO] Nenhum estado salvo, criando novos usuários...")
             users = [UserProfile.generate_random() for _ in range(num_users)]
-            agents = [UserAgent(user) for user in users]
+            agents = [UserAgent(user, topic=topico) for user in users]
     else:
         users = [UserProfile.generate_random() for _ in range(num_users)]
-        agents = [UserAgent(user) for user in users]
+        agents = [UserAgent(user, topic=topico) for user in users]
 
-    # Mostra os perfis
     for agent in agents:
         print(agent.user_profile)
 
-    # Roda os loops
-    tasks = [asyncio.create_task(simulate_user(agent)) for agent in agents]
+    tasks = [asyncio.create_task(simulate_user(agent, topico)) for agent in agents]
 
     try:
         await asyncio.gather(*tasks)
