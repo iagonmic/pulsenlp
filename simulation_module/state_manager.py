@@ -1,7 +1,7 @@
 # salva o estado atual das conversas e perfis em disco
 import json
-from user_profiles import UserProfile
-from thought_generator import UserAgent
+from simulation_module.user_profiles import UserProfile
+from simulation_module.thought_generator import UserAgent
 
 STATE_FILE = "simulation_state.json"
 

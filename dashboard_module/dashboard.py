@@ -1,3 +1,4 @@
+import os
 import matplotlib
 matplotlib.use('Agg') # evitar problemas de threading com o Dash
 import dash
@@ -6,8 +7,35 @@ import dash_mantine_components as dmc
 import pandas as pd
 import json
 from typing import List
-from charts import gerar_grafico_linha, gerar_grafico_barra
-from wordcloud_gen import gerar_nuvem_palavras_base64
+from dashboard_module.charts import gerar_grafico_linha, gerar_grafico_barra
+from dashboard_module.wordcloud_gen import gerar_nuvem_palavras_base64
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+
+
+def ler_contador_json():
+    if os.path.exists("dashboard_module/data.json"):
+        # pode usar timestamp do arquivo ou contador simples
+        return os.path.getmtime("dashboard_module/data.json")  # retorna timestamp da última modificação
+    return 0
+
+class FileChangeHandler(FileSystemEventHandler):
+    def __init__(self, app):
+        self.app = app
+
+    def on_modified(self, event):
+        if event.src_path.endswith("data.json"):
+            self.app.gatilho["atualizar"] += 1
+            print(f"⚡ data.json atualizado - gatilho agora {self.app.gatilho['atualizar']}")
+
+
+def iniciar_observador(app, path="dashboard_module/data.json"):
+    event_handler = FileChangeHandler(app)
+    observer = Observer()
+    observer.schedule(event_handler, path=os.path.dirname(path), recursive=False)
+    observer.start()
+    return observer
+
 
 def criar_filtros(df: pd.DataFrame, colunas: List[str], id_prefix: str):
     filtros = []
@@ -50,8 +78,10 @@ def criar_dashboard(
 
     # Função para ler o JSON
     def ler_json():
-        with open(json_path, encoding="utf-8") as f:
-            return json.load(f)
+        if os.path.exists(json_path):
+            with open(json_path, encoding="utf-8") as f:
+                return json.load(f)
+        return {"nome": ["Arnaldo"], "texto": ["arroba"], "style": ["Formal"], "tone": ["Amigável"], "rating": [0.0]}
 
     # Carregar o arquivo JSON inicial
     data = ler_json()
@@ -75,6 +105,7 @@ def criar_dashboard(
         withGlobalStyles=True,
         withNormalizeCSS=True,
         children=[
+            dcc.Store(id="gatilho-update", data={"atualizar": 0}),
             dmc.Container(
                 [
                     dmc.Card(
@@ -228,13 +259,20 @@ def criar_dashboard(
                 style={"backgroundColor": "#121212", "minHeight": "100vh", "paddingTop": "25px", "paddingBottom": "25px"},
             ),
             # Intervalos
-            dcc.Interval(id="intervalo-grafico-linha", interval=5 * 1000, n_intervals=0),
-            dcc.Interval(id="intervalo-grafico-barra", interval=5 * 1000, n_intervals=0),
-            dcc.Interval(id="intervalo-cards", interval=10 * 1000, n_intervals=0),
+            dcc.Interval(id="intervalo-arquivo", interval=2000, n_intervals=0),
         ],
     )
 
     # ------------------------ CALLBACKS -----------------------------
+
+
+    @app.callback(
+    dash.Output("gatilho-update", "data"),
+    dash.Input("intervalo-arquivo", "n_intervals")
+    )
+    def atualizar_gatilho(_):
+        return ler_contador_json()
+
 
     @app.callback(
     # A saída agora pode ser ajustada para o que você precisar.
@@ -297,18 +335,19 @@ def criar_dashboard(
     
     # Atualizar gráfico de linha
     @app.callback(
-        dash.dependencies.Output("grafico-linha", "figure"),
-        [
-            dash.dependencies.Input(f"filtro-linha-{i}", "value") for i in range(len(colunas_filtros_linha))
-        ] + [dash.dependencies.Input("intervalo-grafico-linha", "n_intervals")]
+    dash.Output("grafico-linha", "figure"),
+    dash.Input("gatilho-update", "data")
     )
     def update_grafico_linha(*valores_filtros):
-        valores_filtros = valores_filtros[:-1]  # exclui n_intervals
+        # pega todos os filtros
+        filtros = valores_filtros[:-1]  # se quiser separar filtros
+        gatilho = valores_filtros[-1]   # agora gatilho é usado para detectar mudança
+
         data = ler_json()
         df_atualizado = pd.DataFrame(data)
         dff = df_atualizado.copy()
 
-        for col, val in zip(colunas_filtros_linha, valores_filtros):
+        for col, val in zip(colunas_filtros_linha, filtros):
             if val is not None and val != "":
                 dff = dff[dff[col] == val]
 
@@ -316,43 +355,38 @@ def criar_dashboard(
 
     # Atualizar gráfico de barra
     @app.callback(
-        dash.dependencies.Output("grafico-barra", "figure"),
-        [
-            dash.dependencies.Input(f"filtro-barra-{i}", "value") for i in range(len(colunas_filtro_barra))
-        ] + [dash.dependencies.Input("intervalo-grafico-barra", "n_intervals")]
+    dash.Output("grafico-barra", "figure"),
+    dash.Input("gatilho-update", "data")
     )
     def update_grafico_barra(*valores_filtros):
-        valores_filtros = valores_filtros[:-1]
+        filtros = valores_filtros[:-1]  # se quiser separar filtros
+        gatilho = valores_filtros[-1]   # agora gatilho é usado para detectar mudança
+
         data = ler_json()
         df_atualizado = pd.DataFrame(data)
         dff = df_atualizado.copy()
 
-        for col, val in zip(colunas_filtro_barra, valores_filtros):
+        for col, val in zip(colunas_filtros_linha, filtros):
             if val is not None and val != "":
                 dff = dff[dff[col] == val]
-
         return gerar_grafico_barra(dff, col_barra_x, col_barra_y)
 
     # Atualizar cards (wordcloud e último comentário)
     @app.callback(
-        [
-            dash.dependencies.Output("imagem-wordcloud", "src"),
-            dash.dependencies.Output("nome-comentario", "children"),
-            dash.dependencies.Output("texto-comentario", "children"),
-        ],
-        [dash.dependencies.Input("intervalo-cards", "n_intervals")]
+    [dash.Output("imagem-wordcloud", "src"),
+     dash.Output("nome-comentario", "children"),
+     dash.Output("texto-comentario", "children")],
+    [dash.Input("gatilho-update", "data")]
     )
-    def update_cards(n_intervals):
+    def update_cards(gatilho):
         data = ler_json()
         df_atualizado = pd.DataFrame(data)
-
         ultimo = df_atualizado.iloc[-1]
         nome = ultimo["nome"]
         texto = ultimo["texto"]
-
         imagem_wordcloud = gerar_nuvem_palavras_base64(df_atualizado, coluna=col_wordcloud)
-
         return imagem_wordcloud, nome, texto
+
 
     return app
 
@@ -371,5 +405,23 @@ app = criar_dashboard(
     col_wordcloud="texto"
 )
 
+app.gatilho = {"atualizar": 0}
+
+def trigger_update():
+    app.gatilho["atualizar"] += 1
+    # Atualiza o dcc.Store no frontend
+    app._cached_gatilho = {"atualizar": app.gatilho["atualizar"]}
+    # Força callback
+    app._callback_map["gatilho-update.data"]["callback"](
+        app._cached_gatilho
+    )
+
+app._trigger_update = trigger_update
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    observer = iniciar_observador(app, path=json_path)
+    try:
+        app.run(debug=True)
+    finally:
+        observer.stop()
+        observer.join()

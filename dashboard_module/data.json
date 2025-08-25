@@ -1,0 +1,51 @@
+[
+  {
+    "nome": "Lucas",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Animais são fascinantes, sempre nos surpreendem com sua diversidade 🌍.",
+    "rating": 0.0
+  },
+  {
+    "nome": "Paulo",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Animais são parte essencial da vida na Terra, e cuidar deles ajuda a manter o equilíbrio natural. 🐾",
+    "rating": 0.6249
+  },
+  {
+    "nome": "Ana",
+    "style": "casual",
+    "tone": "neutral",
+    "texto": "Animais são companheiros incríveis; eles nos ensinam sobre empatia e nos lembram da importância de cuidar do planeta.",
+    "rating": 0.3612
+  },
+  {
+    "nome": "Lucas",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Animais são fascinantes 🐾",
+    "rating": 0.0
+  },
+  {
+    "nome": "Paulo",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Animais são essenciais para o equilíbrio da natureza 🌍",
+    "rating": -0.1531
+  },
+  {
+    "nome": "Lucas",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Animais são incríveis companheiros da natureza 🌿.",
+    "rating": 0.0
+  },
+  {
+    "nome": "Ana",
+    "style": "casual",
+    "tone": "neutral",
+    "texto": "Animais são seres fascinantes que trazem vida e alegria ao nosso dia a dia.",
+    "rating": 0.5859
+  }
+]

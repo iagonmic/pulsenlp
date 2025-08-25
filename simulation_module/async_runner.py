@@ -2,9 +2,9 @@ import os
 import json
 import random
 import asyncio
-from thought_generator import UserAgent
-from user_profiles import UserProfile
-from state_manager import save_state, load_state
+from simulation_module.thought_generator import UserAgent
+from simulation_module.user_profiles import UserProfile
+from simulation_module.state_manager import save_state, load_state
 #from nlp_module.sentiment import sentiment_analysis
 
 ### TESTE
@@ -69,6 +69,37 @@ def load_topic():
 
 
 async def main(num_users=3, resume=False):
+    print("async_runner aguardando tópico...")
+    last_topico = None
+
+    while True:
+        # Se não existir ainda, espera
+        if not os.path.exists("dashboard_module/topico.json"):
+            await asyncio.sleep(1)
+            continue
+
+        try:
+            with open("dashboard_module/topico.json", encoding="utf-8") as f:
+                dados = json.load(f)
+        except Exception as e:
+            print("Erro lendo topico.json:", e)
+            await asyncio.sleep(1)
+            continue
+
+        topico = dados.get("topico")
+        num_agentes = dados.get("num_agentes", 1)
+
+        # Se não tem tópico ainda
+        if not topico or topico.strip() == "":
+            await asyncio.sleep(1)
+            continue
+
+        # Detecta mudança de tópico
+        if topico != last_topico:
+            print(f"Novo tópico detectado: {topico} com {num_agentes} agentes")
+            last_topico = topico
+            break
+
     config = load_topic()
     topico = config["topico"]
     num_users = config["num_agentes"]
@@ -79,10 +110,10 @@ async def main(num_users=3, resume=False):
         agents = load_state()
         if not agents:
             users = [UserProfile.generate_random() for _ in range(num_users)]
-            agents = [UserAgent(user, topic=topico) for user in users]
+            agents = [UserAgent(users) for user in users]
     else:
         users = [UserProfile.generate_random() for _ in range(num_users)]
-        agents = [UserAgent(user, topic=topico) for user in users]
+        agents = [UserAgent(user) for user in users]
 
     for agent in agents:
         print(agent.user_profile)

@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from agno.agent import Agent
 from agno.memory.v2.memory import Memory
 from agno.models.groq.groq import Groq  # <- provedor Groq no Agno
-from user_profiles import UserProfile
+from simulation_module.user_profiles import UserProfile
 
 load_dotenv()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
