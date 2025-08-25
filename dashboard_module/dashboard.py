@@ -208,7 +208,7 @@ def criar_dashboard(
                                 [
                                     dmc.Card(
                                         children=[
-                                            dmc.CardSection(children=filtros_linha + [html.Div(style={"height": "15px"})]),
+                                            dmc.CardSection(id='filtros-linha', children=filtros_linha + [html.Div(style={"height": "15px"})]),
                                             dcc.Graph(
                                                 id="grafico-linha",
                                                 figure=gerar_grafico_linha(df, col_linha_x, col_linha_y),
@@ -337,7 +337,10 @@ def criar_dashboard(
     
     # Atualizar gráfico de linha
     @app.callback(
-    dash.Output("grafico-linha", "figure"),
+    [
+        dash.Output("filtros-linha", "children"),
+        dash.Output("grafico-linha", "figure")
+    ],
     dash.Input("gatilho-update", "data")
     )
     def update_grafico_linha(*valores_filtros):
@@ -353,11 +356,16 @@ def criar_dashboard(
             if val is not None and val != "":
                 dff = dff[dff[col] == val]
 
-        return gerar_grafico_linha(dff, col_linha_x, col_linha_y)
+        filtros_linha = criar_filtros(df, colunas_filtros_linha, id_prefix="filtro-linha") + [html.Div(style={"height": "15px"})]
+
+        return filtros_linha, gerar_grafico_linha(dff, col_linha_x, col_linha_y)
 
     # Atualizar gráfico de barra
     @app.callback(
-    dash.Output("grafico-barra", "figure"),
+    [
+        dash.Output("filtros-barra", "children"),
+        dash.Output("grafico-barra", "figure")
+    ],
     dash.Input("gatilho-update", "data")
     )
     def update_grafico_barra(*valores_filtros):
@@ -373,8 +381,9 @@ def criar_dashboard(
                 dff = dff[dff[col] == val]
 
         df_media = dff.groupby("nome", as_index=False)["rating"].mean()
+        filtros_barra = criar_filtros(dff, colunas_filtro_barra, id_prefix="filtro-barra") + [html.Div(style={"height": "15px"})]
 
-        return gerar_grafico_barra(df_media, col_barra_x, col_barra_y)
+        return filtros_barra, gerar_grafico_barra(df_media, col_barra_x, col_barra_y)
 
     # Atualizar cards (wordcloud e último comentário)
     @app.callback(
