@@ -10,7 +10,6 @@ from nlp_module.sentiment import sentiment_analysis
 
 ### TESTE
 # Análise de sentimentos
-from LeIA import SentimentIntensityAnalyzer
 
 ### TESTE
 

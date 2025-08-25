@@ -16,8 +16,8 @@ def gerar_grafico_linha(df, coluna_x, coluna_y):
         paper_bgcolor='#1A1B1E',
         plot_bgcolor='#1A1B1E',
         font=dict(color='white'),
-        xaxis=dict(title=coluna_x, showgrid=False),
-        yaxis=dict(title=coluna_y, showgrid=False)
+        xaxis=dict(title=coluna_x, showgrid=False, dtick=1),
+        yaxis=dict(title=coluna_y, showgrid=False),
     )
     return fig
 

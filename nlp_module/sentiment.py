@@ -1,5 +1,5 @@
 # Análise de sentimentos
-from LeIA import SentimentIntensityAnalyzer
+from leia import SentimentIntensityAnalyzer
 
 def sentiment_analysis(text: str):
     analyzer = SentimentIntensityAnalyzer()
