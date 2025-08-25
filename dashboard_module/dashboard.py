@@ -15,8 +15,7 @@ from watchdog.events import FileSystemEventHandler
 
 def ler_contador_json():
     if os.path.exists("dashboard_module/data.json"):
-        # pode usar timestamp do arquivo ou contador simples
-        return os.path.getmtime("dashboard_module/data.json")  # retorna timestamp da última modificação
+        return os.path.getmtime("dashboard_module/data.json")  
     return 0
 
 class FileChangeHandler(FileSystemEventHandler):
@@ -37,22 +36,19 @@ def iniciar_observador(app, path="dashboard_module/data.json"):
     return observer
 
 
-def criar_filtros(df: pd.DataFrame, colunas: List[str], id_prefix: str):
+# Agora os filtros começam vazios
+def criar_filtros(colunas: List[str], id_prefix: str):
     filtros = []
     for i, col in enumerate(colunas):
-        valores_unicos = df[col].dropna().unique()
-        valores_unicos = sorted(valores_unicos)
-
         filtro = dmc.Select(
             id=f"{id_prefix}-{i}",
-            data=[{"label": str(v), "value": str(v)} for v in valores_unicos],
+            data=[],  # começa vazio, será preenchido dinamicamente
             placeholder=f"Selecione {col}",
             clearable=True,
             searchable=True,
             nothingFound="Sem opções",
             size="sm",
             radius="lg",  
-
             style={
                 "marginTop": "10px",
                 "marginBottom": "15px",
@@ -97,9 +93,9 @@ def criar_dashboard(
     # Gerar wordcloud em base64
     imagem_wordcloud = gerar_nuvem_palavras_base64(df, coluna=col_wordcloud)
 
-    # Criar filtros
-    filtros_linha = criar_filtros(df, colunas_filtros_linha, id_prefix="filtro-linha")
-    filtros_barra = criar_filtros(df, colunas_filtro_barra, id_prefix="filtro-barra")
+    # Criar filtros (vazios no início)
+    filtros_linha = criar_filtros(colunas_filtros_linha, id_prefix="filtro-linha")
+    filtros_barra = criar_filtros(colunas_filtro_barra, id_prefix="filtro-barra")
 
     # Layout
     app.layout = dmc.MantineProvider(
@@ -111,43 +107,43 @@ def criar_dashboard(
             dmc.Container(
                 [
                     dmc.Card(
-                    [
-                        dmc.Text("Defina o tópico e número de agentes", weight=700, size="lg", mb=10),
-                        dmc.Group(
-                            [
-                                dmc.TextInput(
-                                    label="Digite o tópico da conversa abaixo:",
-                                    id="input-topico",
-                                    placeholder="Digite aqui o tema para comentários...",
-                                    style={"flex": 2},
-                                ),
-                                dmc.NumberInput(
-                                    id="input-agentes",
-                                    value=3,  # valor padrão
-                                    min=1,
-                                    max=10,
-                                    step=1,
-                                    label="Quantas pessoas vai querer na conversa?",
-                                    size="sm",
-                                    style={"width": "120px"},
-                                ),
-                            ],
-                            grow=True,
-                        ),
-                        dmc.Button("Iniciar",id="botao-topico", color="blue", radius="md", fullWidth=True, style={"marginTop": "15px"}),
-                    ],
-                    withBorder=True,
-                    shadow="md",
-                    radius="lg",
-                    p="md",
-                    style={
-                        "backgroundColor": "#1A1B1E",
-                        "marginBottom": "20px",
-                    },
-                ),
+                        [
+                            dmc.Text("Defina o tópico e número de agentes", weight=700, size="lg", mb=10),
+                            dmc.Group(
+                                [
+                                    dmc.TextInput(
+                                        label="Digite o tópico da conversa abaixo:",
+                                        id="input-topico",
+                                        placeholder="Digite aqui o tema para comentários...",
+                                        style={"flex": 2},
+                                    ),
+                                    dmc.NumberInput(
+                                        id="input-agentes",
+                                        value=3,
+                                        min=1,
+                                        max=10,
+                                        step=1,
+                                        label="Quantas pessoas vai querer na conversa?",
+                                        size="sm",
+                                        style={"width": "120px"},
+                                    ),
+                                ],
+                                grow=True,
+                            ),
+                            dmc.Button("Iniciar",id="botao-topico", color="blue", radius="md", fullWidth=True, style={"marginTop": "15px"}),
+                        ],
+                        withBorder=True,
+                        shadow="md",
+                        radius="lg",
+                        p="md",
+                        style={
+                            "backgroundColor": "#1A1B1E",
+                            "marginBottom": "20px",
+                        },
+                    ),
                     dmc.Grid(
                         [
-                            # Coluna esquerda: Wordcloud e Último Comentário
+                            # Coluna esquerda
                             dmc.Col(
                                 html.Div(
                                     [
@@ -203,7 +199,7 @@ def criar_dashboard(
                                 span=6,
                                 style={"display": "flex", "flexDirection": "column", "height": "100vh"},
                             ),
-                            # Coluna direita: Gráficos
+                            # Coluna direita: gráficos
                             dmc.Col(
                                 [
                                     dmc.Card(
@@ -267,130 +263,85 @@ def criar_dashboard(
 
     # ------------------------ CALLBACKS -----------------------------
 
-
     @app.callback(
-    dash.Output("gatilho-update", "data"),
-    dash.Input("intervalo-arquivo", "n_intervals")
+        dash.Output("gatilho-update", "data"),
+        dash.Input("intervalo-arquivo", "n_intervals")
     )
     def atualizar_gatilho(_):
         return ler_contador_json()
 
-
     @app.callback(
-    # A saída agora pode ser ajustada para o que você precisar.
-    # Por exemplo, uma mensagem de sucesso em vez de limpar o input.
-    dash.Output("input-topico", "value"),
-    dash.Input("botao-topico", "n_clicks"),
-    dash.State("input-topico", "value"),
-    # O ID do State foi atualizado para "input-agentes" de acordo com o seu layout.
-    dash.State("input-agentes", "value"),
-    prevent_initial_call=True
-)
+        dash.Output("input-topico", "value"),
+        dash.Input("botao-topico", "n_clicks"),
+        dash.State("input-topico", "value"),
+        dash.State("input-agentes", "value"),
+        prevent_initial_call=True
+    )
     def definir_topico_e_agentes(n_clicks, topico, num_agentes):
-        """
-        Define e salva o tópico e o número de agentes em um arquivo JSON.
-
-        Args:
-            n_clicks (int): Número de cliques no botão.
-            topico (str): O tópico inserido pelo usuário.
-            num_agentes (str): O número de agentes inserido pelo usuário.
-
-        Returns:
-            str: Uma string vazia para limpar o campo de entrada do tópico.
-        """
         if not topico or topico.strip() == "":
-            # Se o tópico estiver vazio, retorna sem fazer nada.
             print("Tópico não pode ser vazio.")
             return topico
-
-        # Verifica se o número de agentes é válido antes de salvar.
         try:
-            # A entrada de número do Dash já retorna um tipo numérico,
-            # mas é bom ter a validação.
             num_agentes_int = int(num_agentes)
         except (ValueError, TypeError):
             print("Número de agentes inválido.")
-            # Retorne o valor original para o usuário corrigir.
             return topico
 
-        # Cria um dicionário para armazenar os dados.
         dados_para_salvar = {
             "topico": topico,
             "num_agentes": num_agentes_int
         }
 
         try:
-            # Salva o dicionário como JSON.
-            # 'w' para sobrescrever, 'a' para adicionar ao final.
-            # 'indent=4' para formatar o JSON de forma legível.
             with open("dashboard_module/topico.json", "w", encoding="utf-8") as f:
                 json.dump(dados_para_salvar, f, ensure_ascii=False, indent=4)
-            
-            print(f"Dados salvos com sucesso: {dados_para_salvar}")  # Mensagem de debug
-            
+            print(f"Dados salvos com sucesso: {dados_para_salvar}")
         except IOError as e:
             print(f"Erro ao salvar o arquivo: {e}")
-            # Em caso de erro, você pode retornar algo para notificar o usuário.
 
-        # Retorna uma string vazia para limpar o campo de entrada 'input-topico'.
         return topico
     
-    # Atualizar gráfico de linha
+    # Atualizar gráfico de linha (com filtros funcionando)
     @app.callback(
-    [
-        dash.Output("filtros-linha", "children"),
-        dash.Output("grafico-linha", "figure")
-    ],
-    dash.Input("gatilho-update", "data")
+        dash.Output("grafico-linha", "figure"),
+        [dash.Input("gatilho-update", "data")] +
+        [dash.Input(f"filtro-linha-{i}", "value") for i in range(len(colunas_filtros_linha))]
     )
-    def update_grafico_linha(*valores_filtros):
-        # pega todos os filtros
-        filtros = valores_filtros[:-1]  # se quiser separar filtros
-        gatilho = valores_filtros[-1]   # agora gatilho é usado para detectar mudança
-
+    def update_grafico_linha(gatilho, *filtros):
         data = ler_json()
         df_atualizado = pd.DataFrame(data)
         dff = df_atualizado.copy()
 
         for col, val in zip(colunas_filtros_linha, filtros):
-            if val is not None and val != "":
+            if val:
                 dff = dff[dff[col] == val]
 
-        filtros_linha = criar_filtros(df, colunas_filtros_linha, id_prefix="filtro-linha") + [html.Div(style={"height": "15px"})]
+        return gerar_grafico_linha(dff, col_linha_x, col_linha_y)
 
-        return filtros_linha, gerar_grafico_linha(dff, col_linha_x, col_linha_y)
-
-    # Atualizar gráfico de barra
+    # Atualizar gráfico de barra (com filtros funcionando)
     @app.callback(
-    [
-        dash.Output("filtros-barra", "children"),
-        dash.Output("grafico-barra", "figure")
-    ],
-    dash.Input("gatilho-update", "data")
+        dash.Output("grafico-barra", "figure"),
+        [dash.Input("gatilho-update", "data")] +
+        [dash.Input(f"filtro-barra-{i}", "value") for i in range(len(colunas_filtro_barra))]
     )
-    def update_grafico_barra(*valores_filtros):
-        filtros = valores_filtros[:-1]  # se quiser separar filtros
-        gatilho = valores_filtros[-1]   # agora gatilho é usado para detectar mudança
-
+    def update_grafico_barra(gatilho, *filtros):
         data = ler_json()
         df_atualizado = pd.DataFrame(data)
         dff = df_atualizado.copy()
 
-        for col, val in zip(colunas_filtros_linha, filtros):
-            if val is not None and val != "":
+        for col, val in zip(colunas_filtro_barra, filtros):
+            if val:
                 dff = dff[dff[col] == val]
 
         df_media = dff.groupby("nome", as_index=False)["rating"].mean()
-        filtros_barra = criar_filtros(dff, colunas_filtro_barra, id_prefix="filtro-barra") + [html.Div(style={"height": "15px"})]
-
-        return filtros_barra, gerar_grafico_barra(df_media, col_barra_x, col_barra_y)
+        return gerar_grafico_barra(df_media, col_barra_x, col_barra_y)
 
     # Atualizar cards (wordcloud e último comentário)
     @app.callback(
-    [dash.Output("imagem-wordcloud", "src"),
-     dash.Output("nome-comentario", "children"),
-     dash.Output("texto-comentario", "children")],
-    [dash.Input("gatilho-update", "data")]
+        [dash.Output("imagem-wordcloud", "src"),
+         dash.Output("nome-comentario", "children"),
+         dash.Output("texto-comentario", "children")],
+        [dash.Input("gatilho-update", "data")]
     )
     def update_cards(gatilho):
         data = ler_json()
@@ -401,6 +352,33 @@ def criar_dashboard(
         imagem_wordcloud = gerar_nuvem_palavras_base64(df_atualizado, coluna=col_wordcloud)
         return imagem_wordcloud, nome, texto
 
+    # Atualizar opções dos filtros de linha dinamicamente
+    for i, col in enumerate(colunas_filtros_linha):
+        @app.callback(
+            dash.Output(f"filtro-linha-{i}", "data"),
+            dash.Input("gatilho-update", "data"),
+            prevent_initial_call=False
+        )
+        def update_filtro_linha(gatilho, col=col):
+            data = ler_json()
+            df_atualizado = pd.DataFrame(data)
+            valores_unicos = df_atualizado[col].dropna().unique()
+            valores_unicos = sorted(valores_unicos)
+            return [{"label": str(v), "value": str(v)} for v in valores_unicos]
+
+    # Atualizar opções dos filtros de barra dinamicamente
+    for i, col in enumerate(colunas_filtro_barra):
+        @app.callback(
+            dash.Output(f"filtro-barra-{i}", "data"),
+            dash.Input("gatilho-update", "data"),
+            prevent_initial_call=False
+        )
+        def update_filtro_barra(gatilho, col=col):
+            data = ler_json()
+            df_atualizado = pd.DataFrame(data)
+            valores_unicos = df_atualizado[col].dropna().unique()
+            valores_unicos = sorted(valores_unicos)
+            return [{"label": str(v), "value": str(v)} for v in valores_unicos]
 
     return app
 
@@ -423,9 +401,7 @@ app.gatilho = {"atualizar": 0}
 
 def trigger_update():
     app.gatilho["atualizar"] += 1
-    # Atualiza o dcc.Store no frontend
     app._cached_gatilho = {"atualizar": app.gatilho["atualizar"]}
-    # Força callback
     app._callback_map["gatilho-update.data"]["callback"](
         app._cached_gatilho
     )
@@ -439,3 +415,4 @@ if __name__ == "__main__":
     finally:
         observer.stop()
         observer.join()
+
