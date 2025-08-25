@@ -11,7 +11,7 @@ def gerar_grafico_linha(df, coluna_x, coluna_y):
         marker=dict(size=8)
     ))
     fig.update_layout(
-        title='Gráfico de Linha',
+        title='Análise de Sentimento x Rodada',
         template='plotly_dark',
         paper_bgcolor='#1A1B1E',
         plot_bgcolor='#1A1B1E',
@@ -31,7 +31,7 @@ def gerar_grafico_barra(df, coluna_x, coluna_y):
         marker=dict(color='#4dabf7')
     ))
     fig.update_layout(
-        title='Gráfico de Barras',
+        title='Rating x Pessoa',
         template='plotly_dark',
         paper_bgcolor='#1A1B1E',
         plot_bgcolor='#1A1B1E',

@@ -5,6 +5,8 @@ import base64
 import re
 import pandas as pd
 
+from nlp_module.preprocessing import process
+
 def gerar_nuvem_palavras_base64(df: pd.DataFrame, coluna: str) -> str:
     """
     Gera uma Word Cloud a partir da coluna do DataFrame e retorna
@@ -24,7 +26,7 @@ def gerar_nuvem_palavras_base64(df: pd.DataFrame, coluna: str) -> str:
         max_words=200,
         colormap='viridis',
         stopwords=STOPWORDS
-    ).generate(texto_completo)
+    ).generate(" ".join(process(texto_completo)))
 
     plt.figure(figsize=(16, 8))
     plt.imshow(wordcloud, interpolation='bilinear')

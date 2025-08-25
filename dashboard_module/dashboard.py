@@ -81,11 +81,13 @@ def criar_dashboard(
         if os.path.exists(json_path):
             with open(json_path, encoding="utf-8") as f:
                 return json.load(f)
-        return {"nome": ["Arnaldo"], "texto": ["arroba"], "style": ["Formal"], "tone": ["Amigável"], "rating": [0.0]}
+        return {"nome": ["Arnaldo"], "texto": ["arroba"], "style": ["Formal"], "tone": ["Amigável"], "rating": [0.0], "topic": ["esporte"], "round": [0]}
 
     # Carregar o arquivo JSON inicial
     data = ler_json()
     df = pd.DataFrame(data)
+
+    print(df)
 
     # Último comentário
     ultimo = df.iloc[-1]
@@ -228,7 +230,7 @@ def criar_dashboard(
                                     ),
                                     dmc.Card(
                                         children=[
-                                            dmc.CardSection(children=filtros_barra + [html.Div(style={"height": "15px"})]),
+                                            dmc.CardSection(id='filtros-barra', children=filtros_barra + [html.Div(style={"height": "15px"})]),
                                             dcc.Graph(
                                                 id="grafico-barra",
                                                 figure=gerar_grafico_barra(df, col_barra_x, col_barra_y),
@@ -259,7 +261,7 @@ def criar_dashboard(
                 style={"backgroundColor": "#121212", "minHeight": "100vh", "paddingTop": "25px", "paddingBottom": "25px"},
             ),
             # Intervalos
-            dcc.Interval(id="intervalo-arquivo", interval=2000, n_intervals=0),
+            dcc.Interval(id="intervalo-arquivo", interval=10000, n_intervals=0),
         ],
     )
 
@@ -369,7 +371,10 @@ def criar_dashboard(
         for col, val in zip(colunas_filtros_linha, filtros):
             if val is not None and val != "":
                 dff = dff[dff[col] == val]
-        return gerar_grafico_barra(dff, col_barra_x, col_barra_y)
+
+        df_media = dff.groupby("nome", as_index=False)["rating"].mean()
+
+        return gerar_grafico_barra(df_media, col_barra_x, col_barra_y)
 
     # Atualizar cards (wordcloud e último comentário)
     @app.callback(

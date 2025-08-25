@@ -5,3 +5,4 @@ dash==2.15.0
 plotly==5.18.0
 leia-br
 watchdog
+groq

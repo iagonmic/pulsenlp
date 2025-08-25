@@ -30,3 +30,6 @@ def process(text: str):
     lemmas = [lemmatizer.lemmatize(token) for token in text_without_stopwords]
 
     return lemmas
+
+text = "Eu amo programação! É muito bom programar"
+print(process(text))

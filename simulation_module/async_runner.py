@@ -5,24 +5,19 @@ import asyncio
 from simulation_module.thought_generator import UserAgent
 from simulation_module.user_profiles import UserProfile
 from simulation_module.state_manager import save_state, load_state
-#from nlp_module.sentiment import sentiment_analysis
+
+from nlp_module.sentiment import sentiment_analysis
 
 ### TESTE
 # Análise de sentimentos
 from LeIA import SentimentIntensityAnalyzer
-
-def sentiment_analysis(text: str):
-    analyzer = SentimentIntensityAnalyzer()
-    score = analyzer.polarity_scores(text)
-    
-    return score['compound']
 
 ### TESTE
 
 DATA_PATH = os.path.join("dashboard_module", "data.json")
 TOPICO_CONFIG_PATH = os.path.join("dashboard_module", "topico.json")
 
-def append_comment_to_json(agent_name: str, agent_style: str, agent_tone: str, text: str):
+def append_comment_to_json(agent_name: str, agent_style: str, agent_tone: str, text: str, topic: str):
     """Adiciona um comentário ao arquivo JSON com análise de sentimento."""
     try:
         if os.path.exists(DATA_PATH):
@@ -39,7 +34,9 @@ def append_comment_to_json(agent_name: str, agent_style: str, agent_tone: str, t
             "style": agent_style,
             "tone": agent_tone,
             "texto": text,
-            "rating": rating
+            "rating": rating,
+            "topic": topic,
+            "round": len(data) + 1
         }
         data.append(new_entry)
 
@@ -58,7 +55,7 @@ async def simulate_user(agent: UserAgent, topico: str, delay_range=(5, 20)):
         print(f"[{agent.user_profile.name}] 💬 {thought}")
 
         # Salvar no JSON com rating de sentimento
-        append_comment_to_json(agent.user_profile.name, agent.user_profile.style, agent.user_profile.tone, thought)
+        append_comment_to_json(agent.user_profile.name, agent.user_profile.style, agent.user_profile.tone, thought, topico)
 
 
 def load_topic():

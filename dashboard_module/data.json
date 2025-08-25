@@ -1,51 +1,119 @@
 [
   {
-    "nome": "Lucas",
+    "nome": "Mariana",
+    "style": "emoji",
+    "tone": "analytical",
+    "texto": "Esporte é um laboratório vivo de disciplina e colaboração; 🌱 cada treino revela como pequenos ajustes podem gerar grandes ganhos. 🏃‍♀️✨",
+    "rating": 0.8074,
+    "topic": "esporte",
+    "round": 1
+  },
+  {
+    "nome": "Fernanda",
     "style": "emoji",
     "tone": "neutral",
-    "texto": "Animais são fascinantes, sempre nos surpreendem com sua diversidade 🌍.",
-    "rating": 0.0
+    "texto": "Esporte é ótimo para a saúde e socialização, embora às vezes fique excessivamente competitivo. 🏃‍♀️",
+    "rating": 0.3818,
+    "topic": "esporte",
+    "round": 2
   },
   {
-    "nome": "Paulo",
+    "nome": "Mariana",
+    "style": "emoji",
+    "tone": "analytical",
+    "texto": "Esporte é um ótimo canal de disciplina e bem‑estar; combina esforço físico 📈 com aprendizado constante, além de fortalecer laços sociais 🤝.",
+    "rating": 0.5859,
+    "topic": "esporte",
+    "round": 3
+  },
+  {
+    "nome": "Fernanda",
+    "style": "gírias",
+    "tone": "neutral",
+    "texto": "Sport é mó massa, dá aquela energia boa e ainda junta a galera numa vibe irada!",
+    "rating": 0.6588,
+    "topic": "esporte",
+    "round": 4
+  },
+  {
+    "nome": "Fernanda",
     "style": "emoji",
     "tone": "neutral",
-    "texto": "Animais são parte essencial da vida na Terra, e cuidar deles ajuda a manter o equilíbrio natural. 🐾",
-    "rating": 0.6249
+    "texto": "Esporte é uma forma excelente de cuidar da saúde e de se conectar com outras pessoas, embora nem sempre seja fácil conciliar tempo e competição. 🤔",
+    "rating": 0.8402,
+    "topic": "esporte",
+    "round": 5
   },
   {
-    "nome": "Ana",
-    "style": "casual",
-    "tone": "neutral",
-    "texto": "Animais são companheiros incríveis; eles nos ensinam sobre empatia e nos lembram da importância de cuidar do planeta.",
-    "rating": 0.3612
+    "nome": "Mariana",
+    "style": "emoji",
+    "tone": "analytical",
+    "texto": "Esporte é essencial para manter a saúde física e mental em equilíbrio, mas é importante praticá‑lo de forma consciente para evitar lesões e sobrecarga. 🏃‍♀️",
+    "rating": -0.6486,
+    "topic": "esporte",
+    "round": 6
   },
   {
-    "nome": "Lucas",
+    "nome": "Mariana",
+    "style": "emoji",
+    "tone": "analytical",
+    "texto": "Esporte é um excelente equilíbrio entre disciplina e diversão 🌟. Ele melhora a saúde física, fortalece a resiliência mental e fomenta valores como trabalho em equipe e perseverança 🏋️‍♀️🤝. A análise mostra que praticar regularmente reduz risco de doenças crônicas e aumenta a longevidade. Em resumo: praticar esportes é um investimento inteligente na qualidade de vida. 🚀",
+    "rating": 0.9022,
+    "topic": "esporte",
+    "round": 7
+  },
+  {
+    "nome": "Fernanda",
     "style": "emoji",
     "tone": "neutral",
-    "texto": "Animais são fascinantes 🐾",
-    "rating": 0.0
+    "texto": "Esporte é essencial para manter o corpo ativo e a mente equilibrada 🏃‍♀️💪",
+    "rating": 0.2732,
+    "topic": "esporte",
+    "round": 8
   },
   {
-    "nome": "Paulo",
+    "nome": "Fernanda",
+    "style": "gírias",
+    "tone": "neutral",
+    "texto": "Sport é massa, dá moral e mantém todo mundo em forma. É uma vibe boa pra quem curte se mexer e ainda se diverte. Vale muito a pena!",
+    "rating": 0.5707,
+    "topic": "esporte",
+    "round": 9
+  },
+  {
+    "nome": "Mariana",
+    "style": "emoji",
+    "tone": "analytical",
+    "texto": "Esporte é a melhor forma de combinar disciplina, saúde e sociabilidade. 🏃‍♀️💪🌍 Ele ensina resiliência, trabalho em equipe e mantém o corpo ativo, tudo isso enquanto cria laços sociais e comunidade. 🚀✨",
+    "rating": 0.8481,
+    "topic": "esporte",
+    "round": 10
+  },
+  {
+    "nome": "Fernanda",
     "style": "emoji",
     "tone": "neutral",
-    "texto": "Animais são essenciais para o equilíbrio da natureza 🌍",
-    "rating": -0.1531
+    "texto": "Esporte é uma forma fantástica de cuidar do corpo e da mente, mas é importante lembrar que o equilíbrio e o respeito ao próprio ritmo são fundamentais. ⚖️",
+    "rating": 0.7096,
+    "topic": "esporte",
+    "round": 11
   },
   {
-    "nome": "Lucas",
+    "nome": "Fernanda",
+    "style": "gírias",
+    "tone": "neutral",
+    "texto": "Esporte é top! Dá moral, faz a galera se mexer e ainda ajuda a saúde.",
+    "rating": 0.4389,
+    "topic": "esporte",
+    "round": 12
+  },
+  {
+    "nome": "Mariana",
     "style": "emoji",
-    "tone": "neutral",
-    "texto": "Animais são incríveis companheiros da natureza 🌿.",
-    "rating": 0.0
-  },
-  {
-    "nome": "Ana",
-    "style": "casual",
-    "tone": "neutral",
-    "texto": "Animais são seres fascinantes que trazem vida e alegria ao nosso dia a dia.",
-    "rating": 0.5859
+    "tone": "analytical",
+    "texto": "🏃‍♀️💡 Esportes são um ótimo catalisador de bem‑estar físico e mental, mas é preciso equilibrar competição com inclusão e sustentabilidade. 🚀💪",
+    "rating": 0.1901,
+    "topic": "esporte",
+    "round": 13
   }
 ]
