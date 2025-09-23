@@ -2,19 +2,19 @@ import os
 import json
 import random
 import asyncio
-from simulation_module.thought_generator import UserAgent
-from simulation_module.user_profiles import UserProfile
-from simulation_module.state_manager import save_state, load_state
+from pulsenlp.simulation_module.thought_generator import UserAgent
+from pulsenlp.simulation_module.user_profiles import UserProfile
+from pulsenlp.simulation_module.state_manager import save_state, load_state
 
-from nlp_module.sentiment import sentiment_analysis
+from pulsenlp.nlp_module.sentiment import sentiment_analysis
 
 ### TESTE
 # Análise de sentimentos
 
 ### TESTE
 
-DATA_PATH = os.path.join("dashboard_module", "data.json")
-TOPICO_CONFIG_PATH = os.path.join("dashboard_module", "topico.json")
+DATA_PATH = os.path.join("pulsenlp", "data.json")
+TOPICO_CONFIG_PATH = os.path.join("pulsenlp", "topico.json")
 
 def append_comment_to_json(agent_name: str, agent_style: str, agent_tone: str, text: str, topic: str):
     """Adiciona um comentário ao arquivo JSON com análise de sentimento."""

@@ -1,5 +1,9 @@
 import reflex as rx
 from rxconfig import config
+from collections import defaultdict
+import json
+
+DATA_PATH = "pulsenlp/data.json"
 
 
 class AppState(rx.State):
@@ -27,38 +31,181 @@ class AppState(rx.State):
         self.simulation_started = False
         print("Simulação parada.")
 
+    @rx.event
+    def set_agent_data(self, agent_data):
+        self.agent_data = agent_data
+
+        # Calcula a média de cada agente ao mesmo tempo
+        avg_dict = {}
+        for nome, data in agent_data.items():
+            if data:
+                avg_dict[nome] = sum(d["sentiment"] for d in data) / len(data)
+            else:
+                avg_dict[nome] = 0
+        self.agent_avg = avg_dict
+    
+
+def sentimental_analysis_graph() -> rx.Component:
+    rx.recharts.LineChart(
+
+    )
+
+def agent_form() -> rx.Component:
+    return rx.card(
+
+    )
+
+def load_json(data_path):
+    with open(data_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def prepare_agent_data(json_data):
+    agents = defaultdict(list)
+    for entry in json_data:
+        agents[entry["nome"]].append({
+            "index": len(agents[entry["nome"]]) + 1,  # só um contador
+            "sentiment": entry["rating"],
+            "texto": entry["texto"],
+            "style": entry["style"],
+            "tone": entry["tone"],
+            "topic": entry["topic"],
+        })
+    return agents
+
+def agent_graph(data: list[dict]) -> rx.Component:
+    # calcula média do sentimento
+    # avg_sentiment = sum(d["sentiment"] for d in data) / len(data) if data else 0
+
+    return rx.recharts.line_chart(
+        # Linha principal dos sentimentos
+        rx.recharts.line(
+            data_key="sentiment",
+            stroke="#3b82f6",
+            dot=True,
+            is_animation_active=True,
+        ),
+        # Linha tracejada no zero
+        rx.recharts.reference_line(
+            y=0,
+            stroke="gray",
+            stroke_dasharray="5 5",
+        ),
+        
+        # Linha de média
+        #rx.recharts.reference_line(
+        #    y=avg_sentiment,
+        #    stroke="red",
+        #    stroke_dasharray="3 3",
+        #    label=f"Média ({avg_sentiment:.2f})",
+        #),
+        
+        # Eixo X = índice (ordem dos comentários)
+        rx.recharts.x_axis(data_key="index"),
+        # Eixo Y fixo entre -1 e 1
+        rx.recharts.y_axis(domain=[-1, 1]),
+        # Tooltip para mostrar os valores
+        rx.recharts.tooltip(),
+        # Dados do agente
+        data=data,
+        width="100%",
+        height=250,
+    )
+
+def agent_card(nome: str, data: list[dict]) -> rx.Component:
+    last = data[-1]  # último comentário para exibir metadados
+    return rx.card(
+        rx.vstack(
+            rx.text(f"Agente: {nome}", size="6", weight="bold"),
+            rx.text(f"Estilo: {last['style']}"),
+            rx.text(f"Tom: {last['tone']}"),
+            rx.spacer(),
+            agent_graph(data),
+        ),
+        padding="20px",
+        margin="10px",
+        width="100%",
+    )
+
+def sentimental_analysis_view() -> rx.Component:
+    json_data = load_json(DATA_PATH)
+    agents = prepare_agent_data(json_data)
+
+    return rx.grid(
+        rx.foreach(
+            list(agents.items()),  # [(nome, data), ...]
+            lambda item: agent_card(item[0], item[1]),
+        ),
+        columns="3",   # quantidade de colunas no grid
+        spacing="6",   # espaçamento entre cards
+        width="100%",  # ocupa toda a largura disponível
+        padding="20px"
+    )
+
 
 def index() -> rx.Component:
-    return rx.center(
-        rx.card(
-            rx.vstack(
-                rx.text(
-                    "Bem-vindo ao PulseNLP!",
+    return rx.vstack(
+        # Card inicial (centralizado horizontalmente)
+        rx.center(
+            rx.card(
+                rx.vstack(
+                    rx.heading(
+                        "Bem-vindo ao PulseNLP!",
+                        align="center",
+                        size="7",
+                        color="blue.600"
+                    ),
+                    rx.text(
+                        "Digite os valores abaixo para iniciar a simulação:",
+                        align="center",
+                        size="4",
+                        color="gray.600"
+                    ),
+                    rx.hstack(
+                        rx.input(
+                            placeholder="Tópico da conversa",
+                            width="100%",
+                            on_change=AppState.set_topico,
+                            required=True
+                        ),
+                        rx.input(
+                            placeholder="Quantidade de agentes",
+                            width="100%",
+                            on_change=AppState.set_num_users
+                        ),
+                        spacing="4",
+                        align="center",
+                        justify="center"
+                    ),
+                    rx.button(
+                        "Iniciar",
+                        color_scheme="blue",
+                        width="100%",
+                        on_click=AppState.start_simulation
+                    ),
+                    spacing="5",
                     align="center",
-                    size="5",
+                    width="100%",
                 ),
-                rx.text(
-                    "Digite os valores abaixo para iniciar a simulação:",
-                    align="center",
-                    size="2"
-                ),
-                rx.hstack(
-                    rx.input(placeholder="Tópico da conversa", width="200px", on_change=AppState.set_topico, required=True),
-                    rx.input(placeholder="Quantidade de agentes", width="200px", on_change=AppState.set_num_users),
-                    spacing="4",
-                    align="center",
-                    justify="center"
-                ),
-                rx.button("Iniciar", color_scheme="blue", width="100%", on_click=AppState.start_simulation),
-                spacing="5",
-                align="center",
-                width="100%",  # garante que o vstack ocupe toda largura do card
-                ),
-            size="3",
-            padding="20px",    
+                padding="35px",
+                width="100%",
+                max_width="500px",
+                border_radius="2xl",   # cantos bem arredondados
+                shadow="lg",           # sombra suave
+                border="1px solid #e2e8f0",  # borda leve (cinza claro)
             ),
-        padding="40px"
-        )
+            width="100%",
+            padding="20px",
+            
+        ),
+
+        # Grid com os agentes
+        sentimental_analysis_view(),
+        spacing="4",
+        width="100%",
+        padding="20px",
+    )
+
+        
 
 
 app = rx.App()
