@@ -6,3 +6,4 @@ plotly==5.18.0
 leia-br
 watchdog
 groq
+reflex==0.8.11
