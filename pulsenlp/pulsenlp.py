@@ -7,26 +7,32 @@ class State(rx.State):
 
 
 def index() -> rx.Component:
-    # Welcome Page (Index)
-    return rx.container(
-        rx.color_mode.button(position="top-right"),
-        rx.vstack(
-            rx.heading("Welcome to Reflex!", size="9"),
-            rx.text(
-                "Get started by editing ",
-                rx.code(f"{config.app_name}/{config.app_name}.py"),
-                size="5",
+    return rx.center(
+        rx.card(
+            rx.vstack(
+                rx.text(
+                    "Defina o tópico e número de agentes",
+                    align="center",
+                    size="5"
+                ),
+                rx.hstack(
+                    rx.input(placeholder="Tópico", width="200px"),
+                    rx.input(placeholder="Número de agentes", width="200px"),
+                    spacing="4",
+                    align="center",
+                    justify="center"
+                ),
+                rx.button("Iniciar", color_scheme="blue", width="100%"),
+                spacing="5",
+                align="center",
+                width="100%",  # garante que o vstack ocupe toda largura do card
             ),
-            rx.link(
-                rx.button("Check out our docs!"),
-                href="https://reflex.dev/docs/getting-started/introduction/",
-                is_external=True,
-            ),
-            spacing="5",
-            justify="center",
-            min_height="85vh",
+            size="3",
+            padding="20px",
         ),
+        padding="40px",
     )
+
 
 
 app = rx.App()
