@@ -1,35 +1,35 @@
-# Tokenização, normalização, stemming, lematização
-
-import nltk
+import spacy
 import re
 
-from nltk import tokenize
-from nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords
-
-nltk.download('punkt_tab')
-nltk.download('stopwords')
-nltk.download('wordnet')
+nlp = spacy.load("pt_core_news_sm")
 
 def process(text: str):
-
     # Normalização
     text_normalized = text.lower()
 
-    # Aplicando Regex
-    text_regex = re.sub(r'[^a-z\s]', '', text_normalized)
+    # Aplicando Regex (mantendo só letras e espaços)
+    text_regex = re.sub(r'[^a-záéíóúâêîôûãõç\s]', '', text_normalized)
 
-    # Tokenização
-    tokenized = tokenize.word_tokenize(text=text_regex, language='portuguese')
+    # Processando
+    doc = nlp(text_regex)
 
-    # Removendo stopwords
-    swords = stopwords.words('portuguese')
-    text_without_stopwords = [token for token in tokenized if token not in swords]
-
-    lemmatizer = WordNetLemmatizer()
-    lemmas = [lemmatizer.lemmatize(token) for token in text_without_stopwords]
+    # Remover stopwords e tokens de pontuação, pegar lemas
+    lemmas = [token.lemma_ for token in doc if not token.is_stop and token.is_alpha]
 
     return lemmas
 
-text = "Eu amo programação! É muito bom programar"
-print(process(text))
+def pos_tagging(text: str):
+    doc = nlp(text)
+    return [(token.text, token.pos_, token.tag_, spacy.explain(token.tag_)) for token in doc]
+
+def noun_chunks(text: str):
+    doc = nlp(text)
+    return [chunk.text for chunk in doc.noun_chunks]
+
+def named_entities(text: str):
+    doc = nlp(text)
+    return [(ent.text, ent.label_, spacy.explain(ent.label_)) for ent in doc.ents]
+
+def sentence_segmentation(text: str):
+    doc = nlp(text)
+    return [sent.text for sent in doc.sents]

@@ -1,3 +1,5 @@
+# python -m spacy download pt_core_news_sm
+
 agno
 dotenv
 dash-mantine-components==0.12.1
@@ -7,3 +9,4 @@ leia-br
 watchdog
 groq
 reflex==0.8.11
+spacy
