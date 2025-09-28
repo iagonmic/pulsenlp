@@ -3,6 +3,7 @@ from rxconfig import config
 from collections import defaultdict
 import json
 from pulsenlp.simulation_module.async_runner import main
+import asyncio
 
 DATA_PATH = "pulsenlp/data.json"
 
@@ -11,6 +12,7 @@ class AppState(rx.State):
     simulation_started: bool = False
     topico: str = ""
     num_users: int = 3
+    agents: dict = {}
 
     def _save_state(self):
         """Salva topico e num_users em um arquivo JSON."""
@@ -20,6 +22,11 @@ class AppState(rx.State):
         }
         with open("pulsenlp/topico.json", "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
+    
+    @rx.event
+    def recreate_cards(self):
+        json_data = load_json(DATA_PATH)
+        self.agents = prepare_agent_data(json_data)
 
     @rx.event
     def set_topico(self, topico):
@@ -35,7 +42,7 @@ class AppState(rx.State):
     def start_simulation(self):
         self.simulation_started = True
         self._save_state()
-        main()
+        asyncio.create_task(main())
         print(f"Simulação iniciada com tópico: {self.topico} e {self.num_users} agentes.")
 
     @rx.event
@@ -56,7 +63,6 @@ class AppState(rx.State):
                 avg_dict[nome] = 0
         self.agent_avg = avg_dict
 
-
 def load_json(data_path):
     with open(data_path, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -66,7 +72,7 @@ def prepare_agent_data(json_data):
     for entry in json_data:
         agents[entry["nome"]].append({
             "index": len(agents[entry["nome"]]) + 1,  # só um contador
-            "sentiment": entry["rating"],
+            "sentiment": entry["rating"]["score"],
             "texto": entry["texto"],
             "style": entry["style"],
             "tone": entry["tone"],
@@ -114,12 +120,12 @@ def agent_graph(data: list[dict]) -> rx.Component:
     )
 
 def agent_card(nome: str, data: list[dict]) -> rx.Component:
-    last = data[-1]  # último comentário para exibir metadados
+    last = data[-1] if data else {}
     return rx.card(
         rx.vstack(
             rx.text(f"Agente: {nome}", size="6", weight="bold"),
-            rx.text(f"Estilo: {last['style']}"),
-            rx.text(f"Tom: {last['tone']}"),
+            rx.text(f"Estilo: {last.get('style', '-')}" if last else "-"),
+            rx.text(f"Tom: {last.get('tone', '-')}" if last else "-"),
             rx.spacer(),
             agent_graph(data),
         ),
@@ -129,17 +135,14 @@ def agent_card(nome: str, data: list[dict]) -> rx.Component:
     )
 
 def sentimental_analysis_view() -> rx.Component:
-    json_data = load_json(DATA_PATH)
-    agents = prepare_agent_data(json_data)
-
     return rx.grid(
         rx.foreach(
-            list(agents.items()),  # [(nome, data), ...]
-            lambda item: agent_card(item[0], item[1]),
+            AppState.agents,
+            lambda nome, data: agent_card(nome, data)
         ),
-        columns="3",   # quantidade de colunas no grid
-        spacing="6",   # espaçamento entre cards
-        width="100%",  # ocupa toda a largura disponível
+        columns="3",
+        spacing="6",
+        width="100%",
         padding="20px"
     )
 
@@ -206,9 +209,6 @@ def index() -> rx.Component:
         width="100%",
         padding="20px",
     )
-
-        
-
 
 app = rx.App()
 app.add_page(index)
