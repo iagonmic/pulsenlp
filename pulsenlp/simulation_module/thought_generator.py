@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from agno.agent import Agent
+from agno.memory.manager import UserMemory
 from agno.models.groq.groq import Groq  # <- provedor Groq no Agno
 from pulsenlp.simulation_module.user_profiles import UserProfile
 
@@ -32,6 +33,7 @@ class UserAgent(Agent):
             instructions="Você é um usuário com um perfil específico." \
             "Gere pensamentos baseados no tópico que foi fornecido, mantendo congruência com o estilo e tom que lhe foram dados.",
             model=Groq(id=self.models[self.current], api_key=GROQ_API_KEY),
+            memory=UserMemory(),
             **kwargs
         )
 

@@ -3,49 +3,14 @@ from rxconfig import config
 from collections import defaultdict
 import json
 from pulsenlp.simulation_module.async_runner import main
-from asyncio import create_task, sleep
-import os
-from pathlib import Path
 
-DATA_PATH = Path("pulsenlp/data.json")
+DATA_PATH = "pulsenlp/data.json"
 
 
 class AppState(rx.State):
     simulation_started: bool = False
     topico: str = ""
     num_users: int = 3
-
-    agent_data: dict = {}
-    agent_avg: dict = {}
-    _last_modified: float = 0
-
-    async def watch_data_file(self):
-        """Monitora DATA_PATH e atualiza agent_data quando o arquivo mudar."""
-        while True:
-            if os.path.exists(DATA_PATH):
-                modified = os.path.getmtime(DATA_PATH)
-                if modified != self._last_modified:
-                    self._last_modified = modified
-                    # Carrega os dados
-                    with open(DATA_PATH, "r", encoding="utf-8") as f:
-                        data = json.load(f)
-                    # Atualiza o estado
-                    self.set_agent_data(data)
-                    print("Agent data atualizado!")
-            await sleep(1)  # verifica a cada 1 segundo
-
-    @rx.event
-    def set_agent_data(self, agent_data):
-        self.agent_data = agent_data
-
-        # Calcula a média de cada agente
-        avg_dict = {}
-        for nome, data in agent_data.items():
-            if data:
-                avg_dict[nome] = sum(d["sentiment"] for d in data) / len(data)
-            else:
-                avg_dict[nome] = 0
-        self.agent_avg = avg_dict
 
     def _save_state(self):
         """Salva topico e num_users em um arquivo JSON."""
@@ -55,8 +20,6 @@ class AppState(rx.State):
         }
         with open("pulsenlp/topico.json", "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
-        if os.path.exists('pulsenlp/data.json'):
-            os.remove('pulsenlp/data.json')
 
     @rx.event
     def set_topico(self, topico):
@@ -72,15 +35,26 @@ class AppState(rx.State):
     def start_simulation(self):
         self.simulation_started = True
         self._save_state()
-        create_task(main())
-        # Inicia o watcher de arquivo
-        create_task(self.watch_data_file())
+        main()
         print(f"Simulação iniciada com tópico: {self.topico} e {self.num_users} agentes.")
 
     @rx.event
     def stop_simulation(self):
         self.simulation_started = False
         print("Simulação parada.")
+
+    @rx.event
+    def set_agent_data(self, agent_data):
+        self.agent_data = agent_data
+
+        # Calcula a média de cada agente ao mesmo tempo
+        avg_dict = {}
+        for nome, data in agent_data.items():
+            if data:
+                avg_dict[nome] = sum(d["sentiment"] for d in data) / len(data)
+            else:
+                avg_dict[nome] = 0
+        self.agent_avg = avg_dict
 
 
 def load_json(data_path):
@@ -155,22 +129,19 @@ def agent_card(nome: str, data: list[dict]) -> rx.Component:
     )
 
 def sentimental_analysis_view() -> rx.Component:
-    # Pega os dados diretamente do AppState
-    state = AppState.get()  # CORRETO
-    print(state)
-    agents = prepare_agent_data(state.agent_data)
+    json_data = load_json(DATA_PATH)
+    agents = prepare_agent_data(json_data)
 
     return rx.grid(
         rx.foreach(
-            list(agents.items()),
+            list(agents.items()),  # [(nome, data), ...]
             lambda item: agent_card(item[0], item[1]),
         ),
-        columns="3",
-        spacing="6",
-        width="100%",
+        columns="3",   # quantidade de colunas no grid
+        spacing="6",   # espaçamento entre cards
+        width="100%",  # ocupa toda a largura disponível
         padding="20px"
     )
-
 
 
 def index() -> rx.Component:
