@@ -2,6 +2,7 @@ import reflex as rx
 from rxconfig import config
 from collections import defaultdict
 import json
+from pulsenlp.simulation_module.async_runner import main
 
 DATA_PATH = "pulsenlp/data.json"
 
@@ -11,10 +12,19 @@ class AppState(rx.State):
     topico: str = ""
     num_users: int = 3
 
+    def _save_state(self):
+        """Salva topico e num_users em um arquivo JSON."""
+        data = {
+            "topico": self.topico,
+            "num_users": self.num_users
+        }
+        with open("pulsenlp/topico.json", "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
+
     @rx.event
     def set_topico(self, topico):
         self.topico = topico
-
+    
     @rx.event
     def set_num_users(self, num_users):
         if num_users.isdigit():
@@ -24,6 +34,8 @@ class AppState(rx.State):
     @rx.event
     def start_simulation(self):
         self.simulation_started = True
+        self._save_state()
+        main()
         print(f"Simulação iniciada com tópico: {self.topico} e {self.num_users} agentes.")
 
     @rx.event
@@ -43,17 +55,7 @@ class AppState(rx.State):
             else:
                 avg_dict[nome] = 0
         self.agent_avg = avg_dict
-    
 
-def sentimental_analysis_graph() -> rx.Component:
-    rx.recharts.LineChart(
-
-    )
-
-def agent_form() -> rx.Component:
-    return rx.card(
-
-    )
 
 def load_json(data_path):
     with open(data_path, "r", encoding="utf-8") as f:

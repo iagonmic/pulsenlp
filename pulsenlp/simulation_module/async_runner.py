@@ -61,7 +61,7 @@ def load_topic():
     if os.path.exists(TOPICO_CONFIG_PATH):
         with open(TOPICO_CONFIG_PATH, "r", encoding="utf-8") as f:
             return json.load(f)
-    return {"topico": "Discussão livre", "num_agentes": 3}
+    return {"topico": "Discussão livre", "num_users": 3}
 
 
 async def main(num_users=3, resume=False):
@@ -70,12 +70,12 @@ async def main(num_users=3, resume=False):
 
     while True:
         # Se não existir ainda, espera
-        if not os.path.exists("dashboard_module/topico.json"):
+        if not os.path.exists("pulsenlp/topico.json"):
             await asyncio.sleep(1)
             continue
 
         try:
-            with open("dashboard_module/topico.json", encoding="utf-8") as f:
+            with open("pulsenlp/topico.json", encoding="utf-8") as f:
                 dados = json.load(f)
         except Exception as e:
             print("Erro lendo topico.json:", e)
@@ -83,7 +83,7 @@ async def main(num_users=3, resume=False):
             continue
 
         topico = dados.get("topico")
-        num_agentes = dados.get("num_agentes", 1)
+        num_users = dados.get("num_users", 1)
 
         # Se não tem tópico ainda
         if not topico or topico.strip() == "":
@@ -92,13 +92,13 @@ async def main(num_users=3, resume=False):
 
         # Detecta mudança de tópico
         if topico != last_topico:
-            print(f"Novo tópico detectado: {topico} com {num_agentes} agentes")
+            print(f"Novo tópico detectado: {topico} com {num_users} agentes")
             last_topico = topico
             break
 
     config = load_topic()
     topico = config["topico"]
-    num_users = config["num_agentes"]
+    num_users = config["num_users"]
 
     print(f"[INFO] Iniciando conversa sobre: {topico} ({num_users} agentes)")
 
