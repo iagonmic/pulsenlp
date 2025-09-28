@@ -1,146 +1,122 @@
 [
   {
-    "nome": "Carlos",
-    "style": "casual",
-    "tone": "sarcastic",
-    "texto": "Cachorro? Ah, o mestre da lealdade que acha que a gente tem tempo infinito pra limpar patinhas e bagunçar o sofá.",
-    "rating": 0.25,
-    "topic": "cachorro",
+    "nome": "Isabela",
+    "style": "gírias",
+    "tone": "optimistic",
+    "texto": "Pato? Só vibe de lago, parece que tá sempre de boas, mó fofura! 🦆✨",
+    "rating": {
+      "label": "POS",
+      "score": 0.9711381793022156
+    },
+    "topic": "pato",
     "round": 1
   },
   {
-    "nome": "Fernanda",
-    "style": "detalhado",
+    "nome": "Carlos",
+    "style": "emoji",
     "tone": "neutral",
-    "texto": "Como Fernanda, penso que os cães são companheiros muito leais e sociáveis, capazes de trazer alegria e bem‑estar ao cotidiano das pessoas. Ao mesmo tempo, reconheço que ter um cachorro implica responsabilidades constantes — alimentação adequada, exercícios regulares, cuidados veterinários e treinamento — que exigem tempo e recursos. Assim, considero que, quando esses aspectos são equilibrados, a presença de um cão pode ser bastante positiva.",
-    "rating": 0.5574,
-    "topic": "cachorro",
+    "texto": "Os patos são criaturas curiosas, principalmente ao deslizar na água. 🦆",
+    "rating": {
+      "label": "NEU",
+      "score": 0.7486312389373779
+    },
+    "topic": "pato",
     "round": 2
   },
   {
-    "nome": "João",
-    "style": "gírias",
-    "tone": "optimistic",
-    "texto": "Cachorro é parceiro de vida, alegra qualquer dia – mó vibe positiva!",
-    "rating": 0.0,
-    "topic": "cachorro",
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "Os patos, apesar de sua aparente graça aquática, revelam-se meramente criaturas ruidosas e desordenadas, cuja presença costuma perturbar a serenidade dos ambientes onde se instalam.",
+    "rating": {
+      "label": "NEU",
+      "score": 0.5214086771011353
+    },
+    "topic": "pato",
     "round": 3
   },
   {
-    "nome": "Ana",
+    "nome": "Carlos",
     "style": "detalhado",
-    "tone": "analytical",
-    "texto": "Como Ana, penso que os cachorros são um exemplo fascinante de coevolução entre humanos e animais domesticados. Do ponto de vista biológico, a seleção artificial que ocorreu ao longo de milhares de anos resultou em uma variedade impressionante de raças, cada uma com adaptações morfológicas e comportamentais específicas que atendem a nichos humanos distintos—desde a caça e pastoreio até a companhia e apoio emocional. Psicologicamente, a relação canina oferece benefícios mensuráveis: a presença de um cão reduz níveis de cortisol, aumenta a liberação de oxitocina e favorece a socialização, o que pode ser particularmente relevante em contextos urbanos onde o isolamento social é crescente. No entanto, é crucial reconhecer que a responsabilidade ética envolve cuidados adequados, treinamento baseado em reforço positivo e atenção ao bem‑estar animal, evitando práticas que priorizem apenas a utilidade humana ou a estética superficial. Em síntese, os cachorros representam não apenas um companheiro afetivo, mas também um modelo de parceria interespécies que ilumina aspectos da nossa própria natureza social e evolutiva.",
-    "rating": 0.8765,
-    "topic": "cachorro",
+    "tone": "optimistic",
+    "texto": "Adoro como os patos deslizam na água com tanta leveza — são pequenos mestres da adaptação e espalham alegria a cada grasnido!",
+    "rating": {
+      "label": "POS",
+      "score": 0.9892081618309021
+    },
+    "topic": "pato",
     "round": 4
   },
   {
-    "nome": "Paulo",
+    "nome": "Isabela",
     "style": "gírias",
-    "tone": "neutral",
-    "texto": "Cachorro? Mano, são os parças mais leais que tem, sempre na boa.",
-    "rating": 0.6124,
-    "topic": "cachorro",
+    "tone": "optimistic",
+    "texto": "Pato? Só vibe boa, mó fofura que dá vontade de adotar um e sair nadando feliz!",
+    "rating": {
+      "label": "POS",
+      "score": 0.9787008166313171
+    },
+    "topic": "pato",
     "round": 5
   },
   {
-    "nome": "Ana",
-    "style": "emoji",
+    "nome": "Carlos",
+    "style": "detalhado",
     "tone": "optimistic",
-    "texto": "Cachorros são puro amor em quatro patinhas! 🐶💛 Eles transformam qualquer dia cinza em um arco‑íris de alegria. 🌈✨",
-    "rating": 0.906,
-    "topic": "cachorro",
+    "texto": "Como Carlos, digo que os patos são realmente encantadores: suas penas brilhantes, o jeito desengonçado de caminhar e aquele quack alegre trazem um toque de natureza vibrante a qualquer lago. Eles me lembram que a vida pode ser leve e divertida, mesmo nas pequenas coisas!",
+    "rating": {
+      "label": "POS",
+      "score": 0.9734200835227966
+    },
+    "topic": "pato",
     "round": 6
   },
   {
     "nome": "Carlos",
-    "style": "casual",
-    "tone": "sarcastic",
-    "texto": "Cachorros? São esses “relógios biológicos” que acham que latir às 6 h da manhã é o melhor jeito de dizer “bom dia”. 🐶😂",
-    "rating": 0.6908,
-    "topic": "cachorro",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "🦆 Pato é um bicho curioso: parece desajeitado na terra, mas desliza com facilidade na água.",
+    "rating": {
+      "label": "NEU",
+      "score": 0.7436898350715637
+    },
+    "topic": "pato",
     "round": 7
   },
   {
-    "nome": "Isabela",
-    "style": "emoji",
-    "tone": "neutral",
-    "texto": "🐶 Acho que os cachorros são ótimos companheiros, sempre animados e carinhosos.",
-    "rating": 0.0,
-    "topic": "cachorro",
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "Os patos, infelizmente, revelam-se meramente incômodos, contribuindo pouco além de bagunçar o ambiente aquático.",
+    "rating": {
+      "label": "NEG",
+      "score": 0.9383360743522644
+    },
+    "topic": "pato",
     "round": 8
   },
   {
-    "nome": "João",
+    "nome": "Isabela",
     "style": "gírias",
     "tone": "optimistic",
-    "texto": "Mano, cachorro é vibe pura de alegria e lealdade – parceiro que nunca te deixa na bad!",
-    "rating": 0.7263,
-    "topic": "cachorro",
+    "texto": "Pato? Mó fofurinha, sempre arrasando na lagoa! 🦆✨",
+    "rating": {
+      "label": "POS",
+      "score": 0.9869504570960999
+    },
+    "topic": "pato",
     "round": 9
   },
   {
-    "nome": "Fernanda",
-    "style": "detalhado",
+    "nome": "Carlos",
+    "style": "emoji",
     "tone": "neutral",
-    "texto": "Os cachorros são animais extremamente sociáveis e adaptáveis, oferecendo companhia e apoio emocional a muitas pessoas, ao mesmo tempo que exigem responsabilidade diária em termos de cuidados, treinamento e exercício.",
-    "rating": 0.2023,
-    "topic": "cachorro",
+    "texto": "Pato tem um jeito tranquilo de deslizar na água, bem simpático de observar 🦆.",
+    "rating": {
+      "label": "POS",
+      "score": 0.833282470703125
+    },
+    "topic": "pato",
     "round": 10
-  },
-  {
-    "nome": "Ana",
-    "style": "detalhado",
-    "tone": "analytical",
-    "texto": "Cachorros são companheiros leais, cuja sociabilidade complexa reflete milênios de domesticação e, ao mesmo tempo, fornece benefícios psicológicos mensuráveis como redução do estresse e aumento da empatia.",
-    "rating": 0.5267,
-    "topic": "cachorro",
-    "round": 11
-  },
-  {
-    "nome": "Ana",
-    "style": "emoji",
-    "tone": "optimistic",
-    "texto": "Cachorros são pura alegria e amor incondicional! 🐶❤️✨",
-    "rating": 0.8516,
-    "topic": "cachorro",
-    "round": 12
-  },
-  {
-    "nome": "Isabela",
-    "style": "emoji",
-    "tone": "neutral",
-    "texto": "Cachorros são companheiros leais e cheios de energia 🐶",
-    "rating": 0.5106,
-    "topic": "cachorro",
-    "round": 13
-  },
-  {
-    "nome": "Fernanda",
-    "style": "detalhado",
-    "tone": "neutral",
-    "texto": "Cachorros são companheiros leais que trazem muita alegria ao cotidiano, além de estimular a prática de atividades ao ar livre.",
-    "rating": 0.8519,
-    "topic": "cachorro",
-    "round": 14
-  },
-  {
-    "nome": "Paulo",
-    "style": "gírias",
-    "tone": "neutral",
-    "texto": "Cachorro é parceiro de responsa, cola contigo sem drama e ainda dá aquele moral quando o dia tá pesado.",
-    "rating": -0.4215,
-    "topic": "cachorro",
-    "round": 15
-  },
-  {
-    "nome": "João",
-    "style": "gírias",
-    "tone": "optimistic",
-    "texto": "Cachorro é parceiro demais, mó energia boa! 🐾🚀",
-    "rating": 0.7126,
-    "topic": "cachorro",
-    "round": 16
   }
 ]
