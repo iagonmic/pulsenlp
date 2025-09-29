@@ -33,7 +33,7 @@ class UserAgent(Agent):
             instructions="Você é um usuário com um perfil específico." \
             "Gere pensamentos baseados no tópico que foi fornecido, mantendo congruência com o estilo e tom que lhe foram dados.",
             model=Groq(id=self.models[self.current], api_key=GROQ_API_KEY),
-            memory=UserMemory(),
+            #memory=UserMemory(),
             **kwargs
         )
 

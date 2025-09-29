@@ -1,146 +1,266 @@
 [
   {
-    "nome": "Carlos",
-    "style": "casual",
-    "tone": "sarcastic",
-    "texto": "Cachorro? Ah, o mestre da lealdade que acha que a gente tem tempo infinito pra limpar patinhas e bagunçar o sofá.",
-    "rating": 0.25,
-    "topic": "cachorro",
-    "round": 1
-  },
-  {
-    "nome": "Fernanda",
-    "style": "detalhado",
-    "tone": "neutral",
-    "texto": "Como Fernanda, penso que os cães são companheiros muito leais e sociáveis, capazes de trazer alegria e bem‑estar ao cotidiano das pessoas. Ao mesmo tempo, reconheço que ter um cachorro implica responsabilidades constantes — alimentação adequada, exercícios regulares, cuidados veterinários e treinamento — que exigem tempo e recursos. Assim, considero que, quando esses aspectos são equilibrados, a presença de um cão pode ser bastante positiva.",
-    "rating": 0.5574,
-    "topic": "cachorro",
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "Os computadores, embora essenciais, são incessantemente fontes de falhas e frustrações.",
+    "rating": {
+      "label": "NEG",
+      "score": 0.6421600580215454
+    },
+    "topic": "computador",
     "round": 2
   },
   {
-    "nome": "João",
-    "style": "gírias",
-    "tone": "optimistic",
-    "texto": "Cachorro é parceiro de vida, alegra qualquer dia – mó vibe positiva!",
-    "rating": 0.0,
-    "topic": "cachorro",
+    "nome": "Carlos",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Computador é uma ferramenta indispensável, embora às vezes ainda trave. 💻",
+    "rating": {
+      "label": "NEU",
+      "score": 0.7363771200180054
+    },
+    "topic": "computador",
     "round": 3
   },
   {
-    "nome": "Ana",
-    "style": "detalhado",
-    "tone": "analytical",
-    "texto": "Como Ana, penso que os cachorros são um exemplo fascinante de coevolução entre humanos e animais domesticados. Do ponto de vista biológico, a seleção artificial que ocorreu ao longo de milhares de anos resultou em uma variedade impressionante de raças, cada uma com adaptações morfológicas e comportamentais específicas que atendem a nichos humanos distintos—desde a caça e pastoreio até a companhia e apoio emocional. Psicologicamente, a relação canina oferece benefícios mensuráveis: a presença de um cão reduz níveis de cortisol, aumenta a liberação de oxitocina e favorece a socialização, o que pode ser particularmente relevante em contextos urbanos onde o isolamento social é crescente. No entanto, é crucial reconhecer que a responsabilidade ética envolve cuidados adequados, treinamento baseado em reforço positivo e atenção ao bem‑estar animal, evitando práticas que priorizem apenas a utilidade humana ou a estética superficial. Em síntese, os cachorros representam não apenas um companheiro afetivo, mas também um modelo de parceria interespécies que ilumina aspectos da nossa própria natureza social e evolutiva.",
-    "rating": 0.8765,
-    "topic": "cachorro",
+    "nome": "Carlos",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Computador: ferramenta prática que facilita o dia a dia, embora às vezes possa ser frustrante. 🙂",
+    "rating": {
+      "label": "NEU",
+      "score": 0.5532681345939636
+    },
+    "topic": "computador",
     "round": 4
   },
   {
-    "nome": "Paulo",
-    "style": "gírias",
-    "tone": "neutral",
-    "texto": "Cachorro? Mano, são os parças mais leais que tem, sempre na boa.",
-    "rating": 0.6124,
-    "topic": "cachorro",
-    "round": 5
-  },
-  {
-    "nome": "Ana",
-    "style": "emoji",
-    "tone": "optimistic",
-    "texto": "Cachorros são puro amor em quatro patinhas! 🐶💛 Eles transformam qualquer dia cinza em um arco‑íris de alegria. 🌈✨",
-    "rating": 0.906,
-    "topic": "cachorro",
-    "round": 6
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "O esporte, infelizmente, tem se tornado cada vez mais um espetáculo mercantilizado, afastando‑se dos valores genuínos de disciplina e camaradagem que deveriam norteá‑lo.",
+    "rating": {
+      "label": "NEG",
+      "score": 0.9638110995292664
+    },
+    "topic": "esporte",
+    "round": 4
   },
   {
     "nome": "Carlos",
-    "style": "casual",
-    "tone": "sarcastic",
-    "texto": "Cachorros? São esses “relógios biológicos” que acham que latir às 6 h da manhã é o melhor jeito de dizer “bom dia”. 🐶😂",
-    "rating": 0.6908,
-    "topic": "cachorro",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Esporte é uma boa maneira de manter a saúde e a disciplina 🏃‍♂️",
+    "rating": {
+      "label": "NEU",
+      "score": 0.7837377190589905
+    },
+    "topic": "esporte",
+    "round": 5
+  },
+  {
+    "nome": "Carlos",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Esporte é bom pra saúde e socialização, mas às vezes a competitividade exagera 😐",
+    "rating": {
+      "label": "NEG",
+      "score": 0.8356727957725525
+    },
+    "topic": "esporte",
+    "round": 6
+  },
+  {
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "O esporte, apesar de sua promessa de união e superação, tem se tornado cada vez mais refém de interesses comerciais, diluindo seu verdadeiro valor.",
+    "rating": {
+      "label": "NEG",
+      "score": 0.9084541201591492
+    },
+    "topic": "esporte",
     "round": 7
   },
   {
-    "nome": "Isabela",
+    "nome": "Carlos",
     "style": "emoji",
     "tone": "neutral",
-    "texto": "🐶 Acho que os cachorros são ótimos companheiros, sempre animados e carinhosos.",
-    "rating": 0.0,
-    "topic": "cachorro",
+    "texto": "Esporte é uma ótima maneira de manter a saúde e ainda socializar com as pessoas. 🙂",
+    "rating": {
+      "label": "POS",
+      "score": 0.8905132412910461
+    },
+    "topic": "esporte",
     "round": 8
   },
   {
-    "nome": "João",
-    "style": "gírias",
-    "tone": "optimistic",
-    "texto": "Mano, cachorro é vibe pura de alegria e lealdade – parceiro que nunca te deixa na bad!",
-    "rating": 0.7263,
-    "topic": "cachorro",
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "O esporte, longe de promover saúde e união, tem se transformado sobretudo em um espetáculo comercial que privilegia o lucro em detrimento do verdadeiro espírito atlético.",
+    "rating": {
+      "label": "NEG",
+      "score": 0.7340930104255676
+    },
+    "topic": "esporte",
     "round": 9
   },
   {
-    "nome": "Fernanda",
-    "style": "detalhado",
+    "nome": "Carlos",
+    "style": "emoji",
     "tone": "neutral",
-    "texto": "Os cachorros são animais extremamente sociáveis e adaptáveis, oferecendo companhia e apoio emocional a muitas pessoas, ao mesmo tempo que exigem responsabilidade diária em termos de cuidados, treinamento e exercício.",
-    "rating": 0.2023,
-    "topic": "cachorro",
+    "texto": "Esporte é uma ótima forma de cuidar do corpo e da mente. 🏃‍♂️",
+    "rating": {
+      "label": "POS",
+      "score": 0.6172065138816833
+    },
+    "topic": "esporte",
     "round": 10
   },
   {
-    "nome": "Ana",
-    "style": "detalhado",
-    "tone": "analytical",
-    "texto": "Cachorros são companheiros leais, cuja sociabilidade complexa reflete milênios de domesticação e, ao mesmo tempo, fornece benefícios psicológicos mensuráveis como redução do estresse e aumento da empatia.",
-    "rating": 0.5267,
-    "topic": "cachorro",
+    "nome": "Carlos",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Esporte é ótimo pra saúde e socialização, mas é importante praticá‑lo de forma equilibrada. 🙂",
+    "rating": {
+      "label": "POS",
+      "score": 0.5692182183265686
+    },
+    "topic": "esporte",
     "round": 11
   },
   {
-    "nome": "Ana",
-    "style": "emoji",
-    "tone": "optimistic",
-    "texto": "Cachorros são pura alegria e amor incondicional! 🐶❤️✨",
-    "rating": 0.8516,
-    "topic": "cachorro",
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "O esporte, apesar de seu potencial benéfico, acaba sendo sobretudo um espetáculo de consumismo e de desigualdades que pouco contribui para a verdadeira melhoria social.",
+    "rating": {
+      "label": "NEG",
+      "score": 0.762144148349762
+    },
+    "topic": "esporte",
     "round": 12
   },
   {
-    "nome": "Isabela",
+    "nome": "Carlos",
     "style": "emoji",
     "tone": "neutral",
-    "texto": "Cachorros são companheiros leais e cheios de energia 🐶",
-    "rating": 0.5106,
-    "topic": "cachorro",
+    "texto": "Esporte é uma ótima forma de manter a saúde em dia, mesmo que nem todo mundo tenha o mesmo entusiasmo. 🏃‍♂️",
+    "rating": {
+      "label": "NEU",
+      "score": 0.6420800089836121
+    },
+    "topic": "esporte",
     "round": 13
   },
   {
-    "nome": "Fernanda",
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "Os computadores, apesar de toda a sua sofisticação, revelam‑se incessantemente vulneráveis a falhas e distrações, tornando‑os mais um fardo do que uma solução duradoura.",
+    "rating": {
+      "label": "NEU",
+      "score": 0.8141701221466064
+    },
+    "topic": "computador",
+    "round": 14
+  },
+  {
+    "nome": "Carlos",
+    "style": "detalhado",
+    "tone": "optimistic",
+    "texto": "Na minha visão, o computador é uma ferramenta incrível que potencializa nossa criatividade, conecta pessoas ao redor do globo e abre portas para aprender e inovar a cada clique.",
+    "rating": {
+      "label": "POS",
+      "score": 0.857524037361145
+    },
+    "topic": "computador",
+    "round": 15
+  },
+  {
+    "nome": "Carlos",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Computador é indispensável no dia a dia, mas ainda acho que a tecnologia poderia ser um pouco mais simples de usar. 💻",
+    "rating": {
+      "label": "NEU",
+      "score": 0.4708901345729828
+    },
+    "topic": "computador",
+    "round": 16
+  },
+  {
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "Os computadores, embora indispensáveis, permanecem como fontes incessantes de falhas, vulnerabilidades e crescente dependência tecnológica.",
+    "rating": {
+      "label": "NEU",
+      "score": 0.737310528755188
+    },
+    "topic": "computador",
+    "round": 17
+  },
+  {
+    "nome": "Bianca",
     "style": "detalhado",
     "tone": "neutral",
-    "texto": "Cachorros são companheiros leais que trazem muita alegria ao cotidiano, além de estimular a prática de atividades ao ar livre.",
-    "rating": 0.8519,
-    "topic": "cachorro",
-    "round": 14
+    "texto": "Como Bianca, diria que os jogos são uma forma de entretenimento interativo que, quando bem projetados, podem combinar diversão e estímulo cognitivo, oferecendo experiências variadas que vão do puro lazer ao desenvolvimento de habilidades específicas.",
+    "rating": {
+      "label": "NEU",
+      "score": 0.5962953567504883
+    },
+    "topic": "jogos",
+    "round": 18
+  },
+  {
+    "nome": "Carlos",
+    "style": "detalhado",
+    "tone": "optimistic",
+    "texto": "Como usuário otimista, vejo o computador como uma ferramenta incrível que expande nossas possibilidades: ele facilita o aprendizado, estimula a criatividade e torna nosso dia a dia muito mais produtivo e divertido.",
+    "rating": {
+      "label": "POS",
+      "score": 0.9732546210289001
+    },
+    "topic": "computador",
+    "round": 19
+  },
+  {
+    "nome": "Carlos",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Computador é uma ferramenta essencial no dia a dia, mas ainda tem limites de velocidade e usabilidade. 💻",
+    "rating": {
+      "label": "NEU",
+      "score": 0.9290273785591125
+    },
+    "topic": "computador",
+    "round": 20
+  },
+  {
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "Os computadores, apesar de sua onipresença, permanecem frágeis e rapidamente ultrapassados, mais um peso que a modernidade impõe.",
+    "rating": {
+      "label": "NEU",
+      "score": 0.6706740856170654
+    },
+    "topic": "computador",
+    "round": 21
   },
   {
     "nome": "Paulo",
     "style": "gírias",
-    "tone": "neutral",
-    "texto": "Cachorro é parceiro de responsa, cola contigo sem drama e ainda dá aquele moral quando o dia tá pesado.",
-    "rating": -0.4215,
-    "topic": "cachorro",
-    "round": 15
-  },
-  {
-    "nome": "João",
-    "style": "gírias",
-    "tone": "optimistic",
-    "texto": "Cachorro é parceiro demais, mó energia boa! 🐾🚀",
-    "rating": 0.7126,
-    "topic": "cachorro",
-    "round": 16
+    "tone": "pessimistic",
+    "texto": "Jogo? Só mais uma cilada que a gente cai pra fugir da realidade.",
+    "rating": {
+      "label": "NEG",
+      "score": 0.5121843814849854
+    },
+    "topic": "jogos",
+    "round": 22
   }
 ]
