@@ -277,19 +277,19 @@ def criar_dashboard(
         dash.State("input-agentes", "value"),
         prevent_initial_call=True
     )
-    def definir_topico_e_agentes(n_clicks, topico, num_agentes):
+    def definir_topico_e_agentes(n_clicks, topico, num_users):
         if not topico or topico.strip() == "":
             print("Tópico não pode ser vazio.")
             return topico
         try:
-            num_agentes_int = int(num_agentes)
+            num_users_int = int(num_users)
         except (ValueError, TypeError):
             print("Número de agentes inválido.")
             return topico
 
         dados_para_salvar = {
             "topico": topico,
-            "num_agentes": num_agentes_int
+            "num_users": num_users
         }
 
         try:

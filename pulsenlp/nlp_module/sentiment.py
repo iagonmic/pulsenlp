@@ -7,10 +7,7 @@ analyzer = create_analyzer(task="sentiment", lang="pt", model_name=model)
 def sentiment_analysis(text: str) -> dict:
     result = analyzer.predict(text)
 
-    return {
-        "label": result.output,  
-        "score": float(result.probas[result.output])
-    }
+    return result.probas['POS'] - result.probas['NEG']
 
 
 if __name__ == "__main__":

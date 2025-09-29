@@ -1,0 +1,65 @@
+[
+  {
+    "nome": "Ana",
+    "style": "emoji",
+    "tone": "pessimistic",
+    "texto": "Avião? Só mais um jeito de nos prender ao céu e ao caos dos atrasos. ✈️😞",
+    "rating": -0.980050076264888,
+    "topic": "avião",
+    "round": 1
+  },
+  {
+    "nome": "Paulo",
+    "style": "gírias",
+    "tone": "pessimistic",
+    "texto": "Avião? Só mais um caixote de metal que te cobra o bolso e te deixa preso no céu, sem saída.",
+    "rating": -0.6737821027636528,
+    "topic": "avião",
+    "round": 2
+  },
+  {
+    "nome": "Ana",
+    "style": "detalhado",
+    "tone": "pessimistic",
+    "texto": "Avião? Só me lembro de como o barulho ensurdecedor, a sensação de estar preso num tubo metálico a milhares de metros de altitude e, claro, a culpa que carrego por contribuir para a destruição do planeta a cada decolagem. Mesmo que prometam segurança, o risco de falhas técnicas ou até mesmo de catástrofes climáticas parece inevitável. Em resumo, viajar de avião parece mais um ato de irresponsabilidade ambiental e de ansiedade constante do que uma experiência agradável.",
+    "rating": -0.6824064552783966,
+    "topic": "avião",
+    "round": 3
+  },
+  {
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "Acredito que, apesar de sua aparente eficiência, o avião permanece uma solução vulnerável e ambientalmente insustentável, cujas falhas técnicas e impactos ecológicos são inevitavelmente prejudiciais.",
+    "rating": -0.24084820225834846,
+    "topic": "avião",
+    "round": 4
+  },
+  {
+    "nome": "Mariana",
+    "style": "detalhado",
+    "tone": "analytical",
+    "texto": "Como Mariana, diria que os aviões são verdadeiros prodígios da engenharia: ao combinar aerodinâmica avançada, sistemas de propulsão cada vez mais eficientes e rigorosos protocolos de segurança, permitem conectar continentes em poucas horas, transformando tanto a economia global quanto a mobilidade individual. Contudo, ainda precisamos equilibrar esse benefício com a mitigação do impacto ambiental, buscando combustíveis sustentáveis e designs ainda mais leves.",
+    "rating": 0.5022979564964771,
+    "topic": "avião",
+    "round": 5
+  },
+  {
+    "nome": "Carlos",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Aviões facilitam viagens longas e rápidas, tornando o mundo mais acessível ✈️",
+    "rating": 0.27923671901226044,
+    "topic": "avião",
+    "round": 6
+  },
+  {
+    "nome": "Isabela",
+    "style": "gírias",
+    "tone": "optimistic",
+    "texto": "Avião? Só alegria! ✈️ Cada decolada é um \"vamo que vamo\" pro horizonte, super vibe de liberdade! 🚀",
+    "rating": 0.9797489556949586,
+    "topic": "avião",
+    "round": 7
+  }
+]
