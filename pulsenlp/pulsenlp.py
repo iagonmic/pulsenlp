@@ -29,6 +29,10 @@ class AppState(rx.State):
         self.agents = prepare_agent_data(json_data)
 
     @rx.event
+    def return_last_comment(self):
+        pass
+
+    @rx.event
     def set_topico(self, topico):
         self.topico = topico
     
@@ -120,7 +124,7 @@ def agent_graph(data: list[dict]) -> rx.Component:
     )
 
 def agent_card(nome: str, data: list[dict]) -> rx.Component:
-    last = data[-1] if data else {}
+    last = data[-1]
     return rx.card(
         rx.vstack(
             rx.text(f"Agente: {nome}", size="6", weight="bold"),
