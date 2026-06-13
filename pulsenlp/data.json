@@ -1,83 +1,326 @@
 [
   {
-    "nome": "Mariana",
-    "style": "formal",
+    "nome": "Ana",
+    "style": "emoji",
     "tone": "pessimistic",
-    "texto": "A criminalidade avança inexoravelmente, revelando a fragilidade das instituições e o declínio da confiança social.",
-    "rating": -0.7400002386420965,
-    "topic": "criminalidade",
+    "texto": "Avião? Sempre atrasado, lotado e cheio de ansiedade 😔.",
+    "rating": -0.9205263666808605,
+    "topic": "Avião",
     "round": 1
   },
   {
     "nome": "Carlos",
     "style": "detalhado",
     "tone": "optimistic",
-    "texto": "Acredito que, embora a criminalidade ainda seja um desafio, estamos avançando com políticas de prevenção, reintegração e tecnologia que, juntas, prometem tornar nossas cidades cada vez mais seguras e justas.",
-    "rating": 0.4480906054377556,
-    "topic": "criminalidade",
+    "texto": "Aviões são verdadeiras pontes de liberdade: nos permitem cruzar continentes em horas, aproximar culturas e transformar o céu em uma estrada de oportunidades infinitas. 🚀✈️",
+    "rating": 0.7382253212854266,
+    "topic": "Avião",
     "round": 2
   },
   {
-    "nome": "Carlos",
-    "style": "emoji",
-    "tone": "neutral",
-    "texto": "A criminalidade é um desafio que exige políticas eficazes e prevenção social. 🤔",
-    "rating": -0.007003646343946457,
-    "topic": "criminalidade",
+    "nome": "Isabela",
+    "style": "gírias",
+    "tone": "optimistic",
+    "texto": "Avião é mó vibe, adoro voar! 🌤️✈️ #LiberdadeNosAres",
+    "rating": 0.9709044103510678,
+    "topic": "Avião",
     "round": 3
   },
   {
     "nome": "Mariana",
     "style": "formal",
     "tone": "pessimistic",
-    "texto": "A criminalidade, infelizmente, revela-se como uma sombra persistente que parece ampliar-se inexoravelmente, corroendo a confiança social e as esperanças de segurança.",
-    "rating": -0.5560498628765345,
-    "topic": "criminalidade",
+    "texto": "Os aviões, embora eficientes para deslocamentos, continuam sendo uma das maiores fontes de emissão de gases nocivos, reforçando meu pessimismo quanto ao futuro da mobilidade aérea.",
+    "rating": -0.6674903389066458,
+    "topic": "Avião",
     "round": 4
-  },
-  {
-    "nome": "Carlos",
-    "style": "detalhado",
-    "tone": "optimistic",
-    "texto": "Acredito que, com mais investimento em educação, inclusão social e oportunidades de emprego, podemos transformar a realidade da criminalidade e construir comunidades mais seguras e resilientes. 🚀",
-    "rating": 0.5057155601680279,
-    "topic": "criminalidade",
-    "round": 5
   },
   {
     "nome": "Carlos",
     "style": "emoji",
     "tone": "neutral",
-    "texto": "A criminalidade é um desafio complexo que exige respostas equilibradas entre prevenção e justiça. 🕊️",
-    "rating": -0.008176462724804878,
-    "topic": "criminalidade",
+    "texto": "Avião: é prático para cobrir longas distâncias rapidamente, embora o processo de embarque às vezes seja cansativo. ✈️",
+    "rating": -0.050706978887319565,
+    "topic": "Avião",
+    "round": 5
+  },
+  {
+    "nome": "Ana",
+    "style": "detalhado",
+    "tone": "pessimistic",
+    "texto": "Aviões são uma tragédia silenciosa: desperdiçam energia, poluem o céu e nos lembram constantemente da fragilidade humana diante de um desastre a qualquer momento.",
+    "rating": -0.820022071711719,
+    "topic": "Avião",
     "round": 6
+  },
+  {
+    "nome": "Mariana",
+    "style": "detalhado",
+    "tone": "analytical",
+    "texto": "Aviões são verdadeiros testemunhos da engenharia moderna: combinam aerodinâmica avançada, eficiência energética e segurança rigorosa, transformando distâncias impossíveis em rotas cotidianas.",
+    "rating": 0.8353103213012218,
+    "topic": "Avião",
+    "round": 7
+  },
+  {
+    "nome": "Ana",
+    "style": "emoji",
+    "tone": "pessimistic",
+    "texto": "Avião? Só mais um risco desnecessário no céu... 😕✈️",
+    "rating": -0.9815660868771374,
+    "topic": "Avião",
+    "round": 8
+  },
+  {
+    "nome": "Isabela",
+    "style": "gírias",
+    "tone": "optimistic",
+    "texto": "Avião é mó vibe! 🚀 Dá aquele feeling de liberdade nas alturas, tudo fica mais leve e o mundo parece um playground gigante. 🌍✈️",
+    "rating": 0.9035026468336582,
+    "topic": "Avião",
+    "round": 9
+  },
+  {
+    "nome": "Carlos",
+    "style": "detalhado",
+    "tone": "optimistic",
+    "texto": "Aviões são verdadeiras máquinas de esperança: nos conectam rapidamente com pessoas queridas, nos permitem descobrir novos destinos e nos inspiram a sonhar alto, literalmente! Cada decolagem é um lembrete de que a tecnologia pode nos levar a lugares que antes pareciam impossíveis, tornando o mundo mais próximo e cheio de possibilidades.",
+    "rating": 0.9104503057897091,
+    "topic": "Avião",
+    "round": 10
   },
   {
     "nome": "Mariana",
     "style": "formal",
     "tone": "pessimistic",
-    "texto": "A criminalidade tem se aprofundado de maneira inexorável, revelando falhas estruturais que parecem insuperáveis e projetando um futuro cada vez mais sombrio para a segurança pública.",
-    "rating": -0.5738772787153721,
-    "topic": "criminalidade",
-    "round": 7
+    "texto": "O uso de aviões, embora conveniente, expõe-nos constantemente a riscos de falhas técnicas, atrasos imprevisíveis e impactos ambientais inevitáveis, tornando qualquer viagem aérea uma escolha carregada de incertezas.",
+    "rating": -0.8425418399274349,
+    "topic": "Avião",
+    "round": 11
+  },
+  {
+    "nome": "Ana",
+    "style": "detalhado",
+    "tone": "pessimistic",
+    "texto": "Aviões são apenas fontes de atrasos intermináveis, riscos inevitáveis e um enorme peso ambiental – mais um fardo que a gente insiste em carregar.",
+    "rating": -0.9161756252869964,
+    "topic": "Avião",
+    "round": 12
+  },
+  {
+    "nome": "Mariana",
+    "style": "detalhado",
+    "tone": "analytical",
+    "texto": "Aviões são a síntese mais eficiente da engenharia aerodinâmica moderna: combinam alta velocidade, segurança robusta e alcance global, transformando distâncias que antes levavam dias em horas, embora ainda dependam de combustíveis fósseis que impõem limites ambientais.",
+    "rating": 0.3463873937726021,
+    "topic": "Avião",
+    "round": 13
+  },
+  {
+    "nome": "Ana",
+    "style": "emoji",
+    "tone": "pessimistic",
+    "texto": "Aviões? Só atraso, turbulência e aquele barulho infernal que nunca acaba 😞✈️.",
+    "rating": -0.9875021069310606,
+    "topic": "Avião",
+    "round": 14
+  },
+  {
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "Os aviões, embora convenientes, representam uma ameaça constante ao meio ambiente e à segurança, perpetuando um modelo de transporte insustentável.",
+    "rating": -0.6924590608105063,
+    "topic": "Avião",
+    "round": 15
   },
   {
     "nome": "Carlos",
     "style": "emoji",
     "tone": "neutral",
-    "texto": "A criminalidade é um desafio complexo que precisa de políticas eficazes e prevenção social. 😐",
-    "rating": -0.08810162544250488,
-    "topic": "criminalidade",
-    "round": 8
+    "texto": "Avião: é rápido e prático, mas às vezes pode ser estressante ✈️.",
+    "rating": 0.060064613819122314,
+    "topic": "Avião",
+    "round": 16
+  },
+  {
+    "nome": "Isabela",
+    "style": "gírias",
+    "tone": "optimistic",
+    "texto": "Avião? Só vibe de liberdade nos céus, mó sensação de \"tô lá em cima, pode crer!\" ✈️🚀",
+    "rating": 0.36826254054903984,
+    "topic": "Avião",
+    "round": 17
   },
   {
     "nome": "Carlos",
     "style": "detalhado",
     "tone": "optimistic",
-    "texto": "Acredito que, com investimento em educação, inclusão social e oportunidades de emprego, podemos reduzir a criminalidade e transformar nossas comunidades em lugares cada vez mais seguros e esperançadores.",
-    "rating": 0.6199572365731001,
-    "topic": "criminalidade",
-    "round": 9
+    "texto": "Acho que voar de avião é uma experiência incrível: rápido, seguro e confortável, nos permite cruzar continentes em poucas horas e ainda contemplar a beleza das nuvens e do horizonte, abrindo portas para novas aventuras e descobertas.",
+    "rating": 0.9599838946014643,
+    "topic": "Avião",
+    "round": 18
+  },
+  {
+    "nome": "Mariana",
+    "style": "detalhado",
+    "tone": "analytical",
+    "texto": "Aviões são conquistas tecnológicas impressionantes que conectam o mundo em horas, mas seu alto custo ambiental torna urgente o desenvolvimento de combustíveis mais limpos e designs mais eficientes.",
+    "rating": 0.6986944954842329,
+    "topic": "Avião",
+    "round": 19
+  },
+  {
+    "nome": "Ana",
+    "style": "detalhado",
+    "tone": "pessimistic",
+    "texto": "Aviões são verdadeiros túneis de metal que nos forçam a aceitar a sensação constante de vulnerabilidade: um pequeno erro de cálculo, uma falha mecânica ou até mesmo uma simples turbulência podem transformar uma viagem que deveria ser prática e confortável em um risco desnecessário e aterrorizante.",
+    "rating": -0.6518215462565422,
+    "topic": "Avião",
+    "round": 20
+  },
+  {
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "Os aviões, embora convenientes, perpetuam uma dependência insustentável e expõem-nos a constantes riscos ambientais e operacionais.",
+    "rating": -0.4439599346369505,
+    "topic": "Avião",
+    "round": 21
+  },
+  {
+    "nome": "Carlos",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Avião é prático para percorrer longas distâncias, embora o desconforto de voar às vezes pese. ✈️😐",
+    "rating": -0.13984990306198597,
+    "topic": "Avião",
+    "round": 22
+  },
+  {
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "Os aviões, embora convenientes, representam uma dependência insustentável de combustíveis fósseis e um risco permanente de falhas técnicas, o que me faz duvidar de seu futuro.",
+    "rating": -0.6174288727343082,
+    "topic": "Avião",
+    "round": 23
+  },
+  {
+    "nome": "Ana",
+    "style": "detalhado",
+    "tone": "pessimistic",
+    "texto": "Aviões são apenas máquinas barulhentas que despejam toneladas de poluição nos céus, além de serem extremamente caros e inseguros – um verdadeiro desperdício de recursos e tranquilidade.",
+    "rating": -0.9693328309804201,
+    "topic": "Avião",
+    "round": 24
+  },
+  {
+    "nome": "Isabela",
+    "style": "gírias",
+    "tone": "optimistic",
+    "texto": "Avião é mara! ✈️ Cada decolada me deixa com aquela vibe de liberdade e descobertas! 🚀✨",
+    "rating": 0.9851296902634203,
+    "topic": "Avião",
+    "round": 25
+  },
+  {
+    "nome": "Ana",
+    "style": "emoji",
+    "tone": "pessimistic",
+    "texto": "Aviões só aumentam o caos e a poluição no céu… 😞",
+    "rating": -0.9882122990675271,
+    "topic": "Avião",
+    "round": 26
+  },
+  {
+    "nome": "Mariana",
+    "style": "detalhado",
+    "tone": "analytical",
+    "texto": "Aviões são verdadeiras obras‑engenharia: combinam aerodinâmica avançada, materiais de alta resistência e sistemas de controle digitais que, juntos, permitem superar a barreira da gravidade com eficiência energética cada vez maior. Essa convergência tecnológica não só reduz o tempo de deslocamento global, como também impulsiona inovações em áreas como energia renovável e automação.",
+    "rating": 0.8088289378210902,
+    "topic": "Avião",
+    "round": 27
+  },
+  {
+    "nome": "Carlos",
+    "style": "detalhado",
+    "tone": "optimistic",
+    "texto": "Aviões são verdadeiras maravilhas da engenharia: nos permitem cruzar continentes em horas, aproximar pessoas e abrir portas para descobertas, tudo com segurança e eficiência. 🚀✈️",
+    "rating": 0.979326986009255,
+    "topic": "Avião",
+    "round": 28
+  },
+  {
+    "nome": "Carlos",
+    "style": "emoji",
+    "tone": "neutral",
+    "texto": "Avião: é uma forma rápida e prática de viajar longas distâncias. ✈️",
+    "rating": 0.053040750324726105,
+    "topic": "Avião",
+    "round": 29
+  },
+  {
+    "nome": "Mariana",
+    "style": "detalhado",
+    "tone": "analytical",
+    "texto": "Como Mariana, penso que o avião representa a síntese mais eficaz da engenharia aerodinâmica e da logística global: apesar do consumo energético elevado, sua capacidade de conectar continentes em poucas horas supera, em termos de custo‑benefício, a maioria dos meios terrestres, especialmente quando se consideram fatores como velocidade, volume de carga transportada e integração de cadeias produtivas internacionais.",
+    "rating": 0.3280173949897289,
+    "topic": "Avião",
+    "round": 30
+  },
+  {
+    "nome": "Mariana",
+    "style": "formal",
+    "tone": "pessimistic",
+    "texto": "Infelizmente, os aviões permanecem como uma das principais fontes de emissão de gases de efeito estufa, tornando sua utilização uma escolha inevitavelmente prejudicial ao meio ambiente.",
+    "rating": -0.3185240216553211,
+    "topic": "Avião",
+    "round": 31
+  },
+  {
+    "nome": "Carlos",
+    "style": "detalhado",
+    "tone": "optimistic",
+    "texto": "Avião é uma das maiores conquistas da humanidade: com ele cruzamos continentes em poucas horas, conectamos culturas e criamos oportunidades que antes eram impensáveis. Cada decolagem me lembra o poder da engenharia e a esperança de um mundo cada vez mais unido.",
+    "rating": 0.9440697780810297,
+    "topic": "Avião",
+    "round": 32
+  },
+  {
+    "nome": "Isabela",
+    "style": "gírias",
+    "tone": "optimistic",
+    "texto": "Avião? É mó vibe! Voar alto, sentir o vento e chegar rapidão: pura magia nos ares! 🚀✈️",
+    "rating": 0.8855977216735482,
+    "topic": "Avião",
+    "round": 33
+  },
+  {
+    "nome": "Ana",
+    "style": "detalhado",
+    "tone": "pessimistic",
+    "texto": "Aviões são uma fonte incessante de estresse: o barulho ensurdecedor, a claustrofobia dos assentos apertados e a constante ansiedade de atrasos ou turbulências. Sem contar o impacto ambiental devastador, que transforma cada voo em um pequeno ato de destruição do planeta.",
+    "rating": -0.9495765594765544,
+    "topic": "Avião",
+    "round": 34
+  },
+  {
+    "nome": "Ana",
+    "style": "emoji",
+    "tone": "pessimistic",
+    "texto": "Aviões são barulhentos, caros e quase nunca chegam no horário 😑",
+    "rating": -0.9285389743745327,
+    "topic": "Avião",
+    "round": 35
+  },
+  {
+    "nome": "Mariana",
+    "style": "detalhado",
+    "tone": "analytical",
+    "texto": "Acho que a aviação é indispensável para a conectividade global, mas ainda carece de avanços urgentes em sustentabilidade e eficiência energética.",
+    "rating": 0.04080560430884361,
+    "topic": "Avião",
+    "round": 36
   }
 ]
