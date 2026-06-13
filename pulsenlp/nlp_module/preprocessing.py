@@ -33,3 +33,4 @@ def named_entities(text: str):
 def sentence_segmentation(text: str):
     doc = nlp(text)
     return [sent.text for sent in doc.sents]
+
