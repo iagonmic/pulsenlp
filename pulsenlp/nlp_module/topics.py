@@ -1,9 +1,10 @@
 # Detecção de assuntos (LDA, embeddings, etc.)
 
-from preprocessing import process
-
 from gensim import corpora
 from gensim.models.ldamodel import LdaModel
+
+from preprocessing import process
+
 
 def detect_topic(text_list):
     # Pré-processamento dos textos para o LDA
@@ -29,6 +30,3 @@ def detect_topic(text_list):
     palavras_chave_topico = lda_model.print_topic(topico_principal[0], topn=5)
     
     return palavras_chave_topico.split('+')
-
-text = ["Esse é um texto de teste para a minha aplicação", "Mais um teste para checagem de operação.", "O meu ventilador está quebrado.", "Como ser um cientista de dados excelente"]
-detect_topic(text)
